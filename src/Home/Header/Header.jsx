@@ -8,7 +8,6 @@ import {
   List,
   ListItem,
   Drawer,
-  Button,
   Divider,
   IconButton,
 } from '@mui/material';
@@ -56,18 +55,21 @@ const Header = () => {
 
   const getLinkNavbar = (attributes, responsive) => {
     const link = attributes.homeButtonLink;
+    const classNavbar = responsive
+      ? 'responsive-navbar-link'
+      : 'desktop-navbar-link';
 
     if (link) {
       const target = attributes.homeTab ? '_blank' : '_self';
 
       return (
-        <a href={link} target={target}>
+        <a href={link} target={target} className={classNavbar}>
           {attributes.menuTitle}
         </a>
       );
     } else {
       return (
-        <a href={attributes.slug} target="_self">
+        <a href={attributes.slug} target="_self" className={classNavbar}>
           {attributes.menuTitle}
         </a>
       );
@@ -86,24 +88,19 @@ const Header = () => {
 
           <ul>
             {pages.map(({ attributes, id }) => (
-              <li key={id}>{getLinkNavbar(attributes)}</li>
+              <li key={id}>{getLinkNavbar(attributes, false)}</li>
             ))}
           </ul>
 
-          <Button
-            className="header-menu-button"
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
             onClick={toggleDrawer('right', true)}
           >
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              sx={{ pr: 0 }}
-            >
-              <Menu />
-            </IconButton>
-          </Button>
+            <Menu />
+          </IconButton>
         </div>
       </Container>
 
@@ -123,10 +120,10 @@ const Header = () => {
           onClick={toggleDrawer('right', false)}
           onKeyDown={toggleDrawer('right', false)}
         >
-          <List>
+          <List class="list-responsive-navbar">
             {pages.map(({ attributes, id }) => (
               <ListItem key={id} disablePadding>
-                {getLinkNavbar(attributes)}
+                {getLinkNavbar(attributes, true)}
               </ListItem>
             ))}
           </List>

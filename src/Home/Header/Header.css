@@ -46,7 +46,11 @@ header {
     align-items: center;
   }
 
-  .header-menu-button {
+  .desktop-navbar-link:hover::after {
+    width: 100%;
+  }
+
+  button {
     display: none !important;
   }
 }
@@ -72,19 +76,47 @@ header {
 .responsive-header-links:active {
   color: inherit;
 }
+
+.list-responsive-navbar {
+  padding-left: 10px;
+}
         
+.desktop-navbar-link {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #333333;
+  margin: 0px 5px;
+  padding: 10px 0px;
+}
+
+.desktop-navbar-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #555555;
+  margin: auto;
+  transition: all .25s;
+}
+
 .responsive-navbar-link {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
-  font-size: 400;
+  font-weight: 400;
   font-style: normal;
   color: #333333;
   width: 100%;
-  line-height: 40px;
-  padding: 0px 10px;
+  line-height: 25px;
+  padding: 5px;
 }
 
 .responsive-menu-close {
-  padding: 5px;
+  padding: 5px 5px 5px 10px;
   margin-top: 10px;
 }
