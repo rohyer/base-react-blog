@@ -48,7 +48,7 @@ const Partners = () => {
       <Container fixed>
         <div className="top-content">
           <h2>{partners.homeTitle}</h2>
-          <p>{partners.excerpt}</p>
+          <p>{partners.homeContent}</p>
         </div>
 
         <div className="posts">
