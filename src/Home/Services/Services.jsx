@@ -94,9 +94,6 @@ const Services = () => {
             {servicesPosts &&
               servicesPosts.map((item, index) => (
                 <SwiperSlide key={index}>
-                  {({ isActive }) =>
-                    isActive ? setSwiper(true) : setSwiper(false)
-                  }
                   <a
                     key={index}
                     to={`servicos/${item.attributes.slug}`}
