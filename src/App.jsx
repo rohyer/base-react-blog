@@ -6,6 +6,7 @@ import About from './Home/About/About';
 import AltAbout from './Home/AltAbout/AltAbout';
 import Services from './Home/Services/Services';
 import Partners from './Home/Partners/Partners';
+import AltPartners from './Home/AltPartners/AltPartners';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Services />
       <AltAbout />
       <Partners />
+      <AltPartners />
       <Footer />
     </div>
   );
