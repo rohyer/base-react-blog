@@ -43,6 +43,9 @@
   .alt-partners p {
     text-align: left;
   }
+  .alt-partners .posts {
+    justify-content: flex-start;
+  }
 }
 @media (max-width: 900px) {
   .alt-partners .left-content {
@@ -54,11 +57,13 @@
   .alt-partners p {
     text-align: center;
   }
+  .alt-partners .posts {
+    justify-content: center;
+  }
 }
 
 .alt-partners .posts {
   display: flex;
-  justify-content: flex-start;
   flex-wrap: wrap;
 }
 
