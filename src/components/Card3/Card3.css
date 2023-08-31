@@ -1,4 +1,5 @@
-.post {
+.partners .post,
+.alt-partners .post {
   display: flex;
   flex-direction: column;
   width: 150px;
