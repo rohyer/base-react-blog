@@ -35,7 +35,7 @@ const Page = ({ id }) => {
       <Container fixed>
         <h1 class="inner-title--responsive">{page.innerTitle}</h1>
 
-        <img className="inner-img" src={`${process.env.REACT_APP_API_URL}${image}`} alt="Imagem" />
+        <img className="inner-img" src={`${import.menta.env.VITE_APP_API_URL}${image}`} alt="Imagem" />
         <div className="inner-text">
           <h1 class="inner-title--desktop">{page.innerTitle}</h1>
           <ReactMarkdown>
