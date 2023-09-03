@@ -99,6 +99,6 @@
 
 @media (max-width: 575px) {
   .services .posts .swiper {
-    width: 290px;
+    max-width: 290px;
   }
 }
