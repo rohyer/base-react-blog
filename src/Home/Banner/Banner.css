@@ -105,10 +105,10 @@
     font-size: 14px;
   }
 
-  .swiper-button-prev, .swiper-button-next {
+  .banner .swiper-button-prev, .banner .swiper-button-next {
     top: 25% !important;
   }
-  .swiper-button-prev::after, .swiper-button-next::after {
+  .banner .swiper-button-prev::after, .banner .swiper-button-next::after {
     font-size: 30px !important;
   }
 }
