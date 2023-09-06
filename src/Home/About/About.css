@@ -43,7 +43,7 @@
   margin: 10px 0px;
 }
 
-.about .content button a {
+.about .content a {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -51,6 +51,11 @@
   text-transform: uppercase;
   text-align: center;
   color: #333333;
+  background-color: #EEEEEE;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 8px 20px;
+  margin: 10px 0px;
 }
 
 @media (min-width: 769px) {
