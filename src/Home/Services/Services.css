@@ -97,8 +97,13 @@
   margin: 10px 0px;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 499px) and (min-width: 400px) {
   .services .posts .swiper {
-    max-width: 290px;
+    max-width: 80%;
+  }
+}
+@media (max-width: 399px) {
+  .services .posts .swiper {
+    max-width: 90%;
   }
 }
