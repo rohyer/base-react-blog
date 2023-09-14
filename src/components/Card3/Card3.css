@@ -1,6 +1,5 @@
 @media (min-width: 400px) {
-  .partners .post,
-  .alt-partners .post {
+  .post-partner {
     display: flex;
     flex-direction: column;
     width: 150px;
@@ -12,14 +11,13 @@
     transition: all .25s;
   }
   
-  .post:hover {
+  .post-partner:hover {
     margin: 5px 10px 15px 10px;
   }
 }
 
 @media (max-width: 399px) {
-  .partners .post,
-  .alt-partners .post {
+  .port-partner {
     display: flex;
     flex-direction: column;
     width: 125px;
@@ -32,7 +30,7 @@
   }
 }
 
-.post img {
+.post-partner img {
   width: 100%;
   height: 100%;
   border-radius: 3px;
