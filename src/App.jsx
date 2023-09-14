@@ -16,7 +16,7 @@ function App() {
         <Route path="quem-somos" element={<Page id={1} />} />
         <Route path="noticias" element={<PostsPage id={2} />} />
         <Route path="cta" element={<Page id={3} />} />
-        <Route path="servios" element={<PostsPage id={4} />} />
+        <Route path="servicos" element={<PostsPage id={4} />} />
         <Route path="parceiros" element={<PostsPage id={5} />} />
       </Routes>
 
