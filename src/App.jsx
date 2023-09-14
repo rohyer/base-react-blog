@@ -1,27 +1,21 @@
 import './App.css';
 import Header from './Home/Header/Header';
 import Footer from './Home/Footer/Footer';
+import Home from './Home/Home';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Banner from './Home/Banner/Banner';
-import About from './Home/About/About';
-import AltAbout from './Home/AltAbout/AltAbout';
-import Services from './Home/Services/Services';
-import Partners from './Home/Partners/Partners';
-import News from './Home/News/News';
-import AltPartners from './Home/AltPartners/AltPartners';
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Header />
-      <Banner />
-      <About />
-      <Services />
-      <AltAbout />
-      <Partners />
-      <News />
-      <AltPartners />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+
       <Footer />
-    </div>
+    </BrowserRouter>
   );
 }
 
