@@ -24,7 +24,7 @@ const Page = ({ id }) => {
       );
       const res = await data.json();
       setPage(res.data.attributes);
-      setImage(res.data.attributes.innerImage.data.attributes.url);
+      setImage(res.data.attributes.innerImage.data);
     };
 
     fetchData();
@@ -35,15 +35,18 @@ const Page = ({ id }) => {
   return (
     <div className="page">
       <Container fixed>
-        <h1 class="inner-title--responsive">{page.innerTitle}</h1>
+        <h1 className="inner-title--responsive">{page.innerTitle}</h1>
 
-        <img
-          className="inner-img"
-          src={`${import.meta.env.VITE_APP_API_URL}${image}`}
-          alt="Imagem"
-        />
+        {image && (
+          <img
+            className="inner-img"
+            src={`${import.meta.env.VITE_APP_API_URL}${image.attributes.url}`}
+            alt="Imagem"
+          />
+        )}
+
         <div className="inner-text">
-          <h1 class="inner-title--desktop">{page.innerTitle}</h1>
+          <h1 className="inner-title--desktop">{page.innerTitle}</h1>
           <ReactMarkdown>{page.innerContent}</ReactMarkdown>
         </div>
       </Container>

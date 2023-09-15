@@ -3,7 +3,7 @@ import Card1 from '../../components/Card1/Card1';
 import Card3 from '../../components/Card3/Card3';
 import React from 'react';
 import { Container, Button } from '@mui/material';
-// import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 const headers = {
@@ -14,7 +14,7 @@ const PostsPage = ({ id, slug }) => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
   const [partnersPosts, setPartnersPosts] = React.useState([]);
-  // let navigate = useNavigate();
+  let navigate = useNavigate();
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -28,7 +28,18 @@ const PostsPage = ({ id, slug }) => {
       );
       const res = await data.json();
       setPage(res.data.attributes);
-      setImage(res.data.attributes.innerImage.data.attributes.url);
+      // setImage(res.data.attributes.innerImage.data.attributes.url);
+    };
+
+    const fetchInnerImage = async () => {
+      const data = await fetch(
+        `http://localhost:1337/api/paginas/${id}?populate[0]=innerImage`,
+        {
+          headers,
+        },
+      );
+      const res = await data.json();
+      setImage(res.data.attributes.innerImage.data);
     };
 
     const fetchPostsData = async () => {
@@ -41,14 +52,15 @@ const PostsPage = ({ id, slug }) => {
 
     fetchData();
     fetchPostsData();
-  }, []);
+    fetchInnerImage();
+  }, [id, slug]);
 
-  const getImage = (image) => {
+  const getImage = () => {
     if (image) {
       return (
         <img
           className="inner-img"
-          src={`${import.meta.env.VITE_APP_API_URL}${image}`}
+          src={`${import.meta.env.VITE_APP_API_URL}${image.attributes.url}`}
           alt="Imagem"
         />
       );
@@ -68,9 +80,9 @@ const PostsPage = ({ id, slug }) => {
   return (
     <div className="posts-page">
       <Container fixed>
-        <h1 class="inner-title--single">{page.innerTitle}</h1>
+        <h1 className="inner-title--single">{page.innerTitle}</h1>
 
-        {getImage(image)}
+        {getImage()}
 
         <div className="inner-text">
           <ReactMarkdown>{page.innerContent}</ReactMarkdown>
@@ -79,7 +91,9 @@ const PostsPage = ({ id, slug }) => {
 
       <Container fixed>
         <div className="posts">
-          {partnersPosts.map((data) => getRightCardComponent(data))}
+          {partnersPosts.map((data) => (
+            <div key={data.id}>{getRightCardComponent(data)}</div>
+          ))}
         </div>
       </Container>
 

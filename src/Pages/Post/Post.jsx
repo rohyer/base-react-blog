@@ -3,40 +3,79 @@ import React from 'react';
 import { Container, Button } from '@mui/material';
 // import { useNavigate, useLoaderData } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const Post = ({ id }) => {
-  const pageData = useLoaderData().data[0];
+const headers = {
+  Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
+};
+
+const Post = ({ collectionType }) => {
+  const [post, setPost] = React.useState({});
+  const [postImage, setPostImage] = React.useState({});
+  const { slug } = useParams();
   let navigate = useNavigate();
 
+  console.log(collectionType);
+  console.log(slug);
+
   React.useEffect(() => {
-    window.scrollTo(0, 0)
+    const fetchData = async () => {
+      const data = await fetch(
+        `http://localhost:1337/api/${collectionType}?filters[slug][$eq]=${slug}&populate=*`,
+        {
+          headers,
+        },
+      );
+      const res = await data.json();
+      setPost(res.data[0]);
+      setPostImage(res.data[0].attributes.innerImage.data);
+    };
+
+    fetchData();
+
+    window.scrollTo(0, 0);
   }, []);
 
-  const getImage = () => {
-    if (pageData.attributes.innerImage.data) {
-      return <img className="inner-img" src={`${import.meta.env.VITE_APP_API_URL}${pageData.attributes.innerImage.data.attributes.url}`} alt="Imagem" />
-    }
-  }
+  post && console.log(post);
 
-  return (    
+  return (
     <div className="page">
-      <Container fixed>
-        <h1 class="inner-title--responsive">{pageData.attributes.innerTitle}</h1>
+      {post.attributes && (
+        <Container fixed>
+          <h1 className="inner-title--responsive">
+            {post.attributes.innerTitle}
+          </h1>
 
-        {getImage()}
+          {postImage && (
+            <img
+              className="inner-img"
+              src={`${import.meta.env.VITE_APP_API_URL}${
+                postImage.attributes.url
+              }`}
+              alt="Imagem"
+            />
+          )}
 
-        <div className="inner-text">
-          <h1 class="inner-title--desktop">{pageData.attributes.innerTitle}</h1>
-          <ReactMarkdown>
-            {pageData.attributes.innerContent}
-          </ReactMarkdown>
-        </div>
-      </Container>
+          <div className="inner-text">
+            <h1 className="inner-title--desktop">
+              {post.attributes.innerTitle}
+            </h1>
+            <ReactMarkdown>{post.attributes.innerContent}</ReactMarkdown>
+          </div>
+        </Container>
+      )}
       <Container fixed>
-        <Button className="back-btn" variant="contained" color="inherit" onClick={() => navigate(-1)}>Voltar</Button>
+        <Button
+          className="back-btn"
+          variant="contained"
+          color="inherit"
+          onClick={() => navigate(-1)}
+        >
+          Voltar
+        </Button>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Post
+export default Post;
