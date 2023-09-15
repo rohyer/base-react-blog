@@ -15,9 +15,6 @@ const Post = ({ collectionType }) => {
   const { slug } = useParams();
   let navigate = useNavigate();
 
-  console.log(collectionType);
-  console.log(slug);
-
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
@@ -35,8 +32,6 @@ const Post = ({ collectionType }) => {
 
     window.scrollTo(0, 0);
   }, []);
-
-  post && console.log(post);
 
   return (
     <div className="page">
