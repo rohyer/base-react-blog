@@ -5,6 +5,7 @@ import Home from './Home/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Page from './Pages/Page/Page';
 import PostsPage from './Pages/PostsPage/PostsPage';
+import Post from './Pages/Post/Post';
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="quem-somos" element={<Page id={1} />} />
         <Route path="noticias" element={<PostsPage id={2} slug="noticias" />} />
+        <Route
+          path="noticias/:slug"
+          element={<Post collectionType="noticias" />}
+        />
         <Route path="cta" element={<Page id={3} />} />
         <Route path="servicos" element={<PostsPage id={4} slug="servicos" />} />
         <Route
