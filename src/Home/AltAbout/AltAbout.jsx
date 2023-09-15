@@ -20,7 +20,7 @@ const AltAbout = () => {
       );
       const res = await data.json();
       setAltAboutContent(res.data.attributes);
-      setAltAboutImage(res.data.attributes.homeImage.data.attributes.url);
+      setAltAboutImage(res.data.attributes.homeImage.data);
     };
 
     fetchData();
@@ -54,10 +54,14 @@ const AltAbout = () => {
       <Container fixed>
         <div className="content">
           <div className="img">
-            <img
-              src={`${import.meta.env.VITE_APP_API_URL}${altAboutImage}`}
-              alt="Imagem"
-            />
+            {altAboutImage && (
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL}${
+                  altAboutImage.attributes.url
+                }`}
+                alt="Imagem"
+              />
+            )}
           </div>
           <div className="text">
             <h2>{altAboutContent.homeTitle}</h2>

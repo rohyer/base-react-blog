@@ -20,7 +20,7 @@ const About = () => {
       );
       const res = await data.json();
       setAboutContent(res.data.attributes);
-      setAboutImage(res.data.attributes.homeImage.data.attributes.url);
+      setAboutImage(res.data.attributes.homeImage.data);
     };
 
     fetchData();
@@ -59,10 +59,14 @@ const About = () => {
             {getLink()}
           </div>
           <div className="img">
-            <img
-              src={`${import.meta.env.VITE_APP_API_URL}${aboutImage}`}
-              alt="Imagem"
-            />
+            {aboutImage && (
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL}${
+                  aboutImage.attributes.url
+                }`}
+                alt="Imagem"
+              />
+            )}
           </div>
         </div>
       </Container>
