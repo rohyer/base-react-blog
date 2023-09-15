@@ -11,6 +11,7 @@ import {
   Divider,
   IconButton,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
 import { Menu, Close } from '@mui/icons-material';
 
 const headers = {
@@ -63,13 +64,13 @@ const Header = () => {
       const target = attributes.homeTab ? '_blank' : '_self';
 
       return (
-        <a href={link} target={target} className={classNavbar}>
+        <Link to={link} target={target} className={classNavbar}>
           {attributes.menuTitle}
-        </a>
+        </Link>
       );
     } else {
       return (
-        <a href={attributes.slug} target="_self" className={classNavbar}>
+        <a to={attributes.slug} target="_self" className={classNavbar}>
           {attributes.menuTitle}
         </a>
       );
@@ -81,9 +82,9 @@ const Header = () => {
       <Container fixed>
         <div className="items">
           <div className="logo">
-            <a href={window.location.origin}>
+            <Link to={window.location.origin}>
               <img src={logo} alt="" />
-            </a>
+            </Link>
           </div>
 
           <ul>
@@ -120,7 +121,7 @@ const Header = () => {
           onClick={toggleDrawer('right', false)}
           onKeyDown={toggleDrawer('right', false)}
         >
-          <List class="list-responsive-navbar">
+          <List className="list-responsive-navbar">
             {pages.map(({ attributes, id }) => (
               <ListItem key={id} disablePadding>
                 {getLinkNavbar(attributes, true)}
