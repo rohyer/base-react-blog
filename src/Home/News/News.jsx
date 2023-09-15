@@ -1,6 +1,7 @@
 import { Container } from '@mui/material';
 import React from 'react';
 import './News.css';
+import { Link } from 'react-router-dom';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -38,12 +39,12 @@ const News = () => {
   const getLink = () => {
     if (news.homeButtonLink && news.homeButtonText) {
       return (
-        <a
-          href={news.homeButtonLink}
+        <Link
+          to={news.homeButtonLink}
           target={news.homeTab ? '_blank' : '_self'}
         >
           {news.homeButtonText}
-        </a>
+        </Link>
       );
     }
   };
@@ -60,7 +61,13 @@ const News = () => {
           <div className="posts">
             {newsPosts &&
               newsPosts.map((item, index) => (
-                <a key={index} className="post" href="">
+                <Link
+                  key={index}
+                  className="post"
+                  to={`${import.meta.env.VITE_APP_ORIGIN_URL}/noticias/${
+                    item.attributes.slug
+                  }`}
+                >
                   <img
                     src={`${import.meta.env.VITE_APP_API_URL}${
                       item.attributes.cardImage.data.attributes.url
@@ -70,7 +77,7 @@ const News = () => {
                   <div className="post-content">
                     <p>{item.attributes.cardTitle}</p>
                   </div>
-                </a>
+                </Link>
               ))}
           </div>
 
