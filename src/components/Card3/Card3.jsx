@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Card3.css';
 import React from 'react';
 
@@ -18,14 +19,14 @@ const Card3 = ({ data, api }) => {
 
     if (content) {
       return (
-        <a
+        <Link
           key={data.id}
-          href={`${window.location.origin}/${api}/${data.attributes.slug}`}
+          to={`${window.location.origin}/${api}/${data.attributes.slug}`}
           target="_self"
           className="post-partner"
         >
           {getPostCard(data)}
-        </a>
+        </Link>
       );
     } else {
       return (
