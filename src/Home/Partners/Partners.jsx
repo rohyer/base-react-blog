@@ -2,8 +2,11 @@ import './Partners.css';
 import Card3 from '../../components/Card3/Card3';
 import React from 'react';
 import { Container, Button } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-const headers = { 'Authorization': 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN }
+const headers = {
+  Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
+};
 
 const Partners = () => {
   const [partners, setPartners] = React.useState({});
@@ -12,19 +15,22 @@ const Partners = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await fetch('http://localhost:1337/api/paginas/5', {
-        headers
+        headers,
       });
       const res = await data.json();
       setPartners(res.data.attributes);
-    }
+    };
 
     const fetchPostsData = async () => {
-      const data = await fetch('http://localhost:1337/api/parceiros?populate=*', {
-        headers
-      });
+      const data = await fetch(
+        'http://localhost:1337/api/parceiros?populate=*',
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setPartnersPosts(res.data);
-    }
+    };
 
     fetchData();
     fetchPostsData();
@@ -37,11 +43,13 @@ const Partners = () => {
     if (link) {
       const buttonTarget = partners.homeTab ? '_blank' : '_self';
 
-      return <Button href={link} target={buttonTarget}>{buttonText}</Button>
-    } else {
-      if (buttonText) return <Button href={partners.slug} target='_self'>{buttonText}</Button>
+      return (
+        <Link to={link} target={buttonTarget}>
+          {buttonText}
+        </Link>
+      );
     }
-  }
+  };
 
   return (
     <div className="partners">
@@ -52,15 +60,16 @@ const Partners = () => {
         </div>
 
         <div className="posts">
-          { partnersPosts && partnersPosts.map((data, index) => <Card3 data={data} key={index} api="parceiros" />) }
+          {partnersPosts &&
+            partnersPosts.map((data, index) => (
+              <Card3 data={data} key={index} api="parceiros" />
+            ))}
         </div>
 
-        <div className="bottom-content">
-          {getLink()}
-        </div>
+        <div className="bottom-content">{getLink()}</div>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Partners
+export default Partners;
