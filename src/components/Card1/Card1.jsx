@@ -20,7 +20,6 @@ const Card1 = ({ data, api }) => {
   };
 
   const getPostLink = (data) => {
-    const slug = data.attributes.slug;
     const content = data.attributes.innerContent;
 
     if (content) {
