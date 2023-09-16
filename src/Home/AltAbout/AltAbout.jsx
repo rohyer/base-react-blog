@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container } from '@mui/material';
+import { Link } from 'react-router-dom';
 import './AltAbout.css';
 
 const headers = {
@@ -34,18 +35,10 @@ const AltAbout = () => {
       const targetLink = altAboutContent.homeTab ? '_blank' : '_self';
 
       return (
-        <a href={link} target={targetLink}>
+        <Link to={link} target={targetLink}>
           {buttonText}
-        </a>
+        </Link>
       );
-    } else {
-      if (buttonText) {
-        return (
-          <a href={altAboutContent.slug} target="_self">
-            {buttonText}
-          </a>
-        );
-      }
     }
   };
 
