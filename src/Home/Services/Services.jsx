@@ -10,6 +10,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
+import { Link } from 'react-router-dom';
 
 const headers = {
   Authorization: 'bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -52,9 +53,9 @@ const Services = () => {
       const targetLink = services.homeTab ? '_blank' : '_self';
 
       return (
-        <a href={`${link}`} target={targetLink}>
+        <Link to={`${link}`} target={targetLink}>
           {buttonTitle}
-        </a>
+        </Link>
       );
     }
   };
@@ -94,9 +95,11 @@ const Services = () => {
             {servicesPosts &&
               servicesPosts.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <a
+                  <Link
                     key={index}
-                    to={`servicos/${item.attributes.slug}`}
+                    to={`${import.meta.env.VITE_APP_ORIGIN_URL}/servicos/${
+                      item.attributes.slug
+                    }`}
                     className="post"
                   >
                     <img
@@ -108,7 +111,7 @@ const Services = () => {
                     <div className="post-content">
                       <p>{item.attributes.cardTitle}</p>
                     </div>
-                  </a>
+                  </Link>
                 </SwiperSlide>
               ))}
           </Swiper>
