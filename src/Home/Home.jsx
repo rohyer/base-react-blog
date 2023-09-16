@@ -6,11 +6,12 @@ import Services from './Services/Services';
 import Partners from './Partners/Partners';
 import News from './News/News';
 import AltPartners from './AltPartners/AltPartners';
+import AltBanner from './AltBanner/AltBanner';
 
 const Home = () => {
   return (
     <>
-      <Banner />
+      <AltBanner />
       <About />
       <Services />
       <AltAbout />
