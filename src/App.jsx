@@ -23,8 +23,16 @@ function App() {
         <Route path="cta" element={<Page id={3} />} />
         <Route path="servicos" element={<PostsPage id={4} slug="servicos" />} />
         <Route
+          path="servicos/:slug"
+          element={<Post collectionType="servicos" />}
+        />
+        <Route
           path="parceiros"
           element={<PostsPage id={5} slug="parceiros" />}
+        />
+        <Route
+          path="parceiros/:slug"
+          element={<Post collectionType="parceiros" />}
         />
       </Routes>
 
