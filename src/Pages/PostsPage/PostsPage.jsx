@@ -21,24 +21,13 @@ const PostsPage = ({ id, slug }) => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/${id}?populate=*`,
-        {
-          headers,
-        },
-      );
-      const res = await data.json();
-      setPage(res.data.attributes);
-      // setImage(res.data.attributes.innerImage.data.attributes.url);
-    };
-
-    const fetchInnerImage = async () => {
-      const data = await fetch(
         `http://localhost:1337/api/paginas/${id}?populate[0]=innerImage`,
         {
           headers,
         },
       );
       const res = await data.json();
+      setPage(res.data.attributes);
       setImage(res.data.attributes.innerImage.data);
     };
 
@@ -52,7 +41,6 @@ const PostsPage = ({ id, slug }) => {
 
     fetchData();
     fetchPostsData();
-    fetchInnerImage();
   }, [id, slug]);
 
   const getImage = () => {
