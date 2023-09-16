@@ -1,0 +1,117 @@
+
+
+.banner .card {
+  display: flex;
+  background-color: #FFF;
+  border-radius: 3px;
+  box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.2);
+}
+
+.banner .image {
+  position: relative;
+  display: flex;
+}
+
+.banner .image img {
+  width: 100%;
+  height: auto;
+  border-radius: 3px 0px 0px 3px;
+}
+
+.banner .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.banner .content h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: uppercase;
+  text-align: center;
+  color: #333333;
+  margin: 0 0 20px;
+}
+
+.banner .content p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  color: #333333;
+  margin: 0 0 15px;
+}
+
+.banner .content a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: uppercase;
+  text-align: center;
+  color: #333333;
+  background-color: #EEEEEE;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  padding: 8px 20px;
+  margin: 10px 0px;
+}
+
+.swiper-button-prev::after, .swiper-button-next::after {
+  color: #777777 !important;
+}
+
+@media (min-width: 991px) {
+  .banner .card {
+    align-items: center;
+  }
+  .banner .content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 150px;
+    width: 45%;
+    margin: auto;
+  }
+  .banner .image {
+    width: 100%;
+    height: 800px;
+  }
+  .banner .content {
+    padding: 15px 45px 15px 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  .banner .card {
+    flex-direction: column;
+    height: auto;
+  }
+  .banner .content {
+    padding: 15px;
+  }
+  .banner .image {
+    display: flex;
+    width: 100%;
+  }
+}
+
+@media (max-width: 575px) {
+  .banner .content h2 {
+    font-size: 22px;
+  }
+  
+  .banner .content p {
+    font-size: 14px;
+  }
+
+  .banner .swiper-button-prev, .banner .swiper-button-next {
+    top: 25% !important;
+  }
+  .banner .swiper-button-prev::after, .banner .swiper-button-next::after {
+    font-size: 30px !important;
+  }
+}
