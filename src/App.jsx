@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Page from './Pages/Page/Page';
 import PostsPage from './Pages/PostsPage/PostsPage';
 import Post from './Pages/Post/Post';
+import PageContact from './Pages/PageContact/PageContact';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           path="parceiros/:slug"
           element={<Post collectionType="parceiros" />}
         />
+        <Route path="contato" element={<PageContact id={6} slug="contato" />} />
       </Routes>
 
       <Footer />
