@@ -2,13 +2,13 @@
   padding: 60px 0px;
 }
 
-.about .content {
+.content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.about .text h2 {
+.text h2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 32px;
   font-weight: 500;
@@ -19,7 +19,7 @@
   margin: 0 0 20px;
 }
 
-.about .text p {
+.text p {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -28,14 +28,14 @@
   color: #333333;
 }
 
-.about .img img {
+.img img {
   width: 100%;
   height: auto;
   filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.45));
   border-radius: 6px;
 }
 
-.about .content button {
+.content button {
   background-color: #EEEEEE;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
@@ -43,7 +43,7 @@
   margin: 10px 0px;
 }
 
-.about .content button a {
+.content button a {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 700;
@@ -54,27 +54,27 @@
 }
 
 @media (min-width: 769px) {
-  .about .text {
+  .text {
     width: 55%;
     padding-right: 60px;
   }
 
-  .about .img {
+  .img {
     width: 45%;
     margin-right: 45px;
   }
 }
 
 @media (max-width: 768px) {
-  .about .content {
+  .content {
     flex-wrap: wrap;
   }
 
-  .about .text {
+  .text {
     width: 100%;
   }
 
-  .about .img {
+  .img {
     width: 100%;
     margin-bottom: 20px;
   }

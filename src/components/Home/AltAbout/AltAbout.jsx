@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@mui/material';
 import { Link } from 'react-router-dom';
-import './AltAbout.css';
+import styles from './AltAbout.module.css';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -43,10 +43,10 @@ const AltAbout = () => {
   };
 
   return (
-    <section className="about">
+    <section className={styles.about}>
       <Container fixed>
-        <div className="content">
-          <div className="img">
+        <div className={styles.content}>
+          <div className={styles.img}>
             {altAboutImage && (
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}${
@@ -56,7 +56,7 @@ const AltAbout = () => {
               />
             )}
           </div>
-          <div className="text">
+          <div className={styles.text}>
             <h2>{altAboutContent.homeTitle}</h2>
             <p>{altAboutContent.homeContent}</p>
             {getLink()}
