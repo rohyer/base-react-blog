@@ -61,9 +61,7 @@ const News = () => {
 
           <div className="posts">
             {newsPosts &&
-              newsPosts.map((item, index) => (
-                <Card1 data={item} api="noticias" />
-              ))}
+              newsPosts.map((item) => <Card1 data={item} api="noticias" />)}
           </div>
 
           <div className={styles.bottomContent}>{getLink()}</div>
