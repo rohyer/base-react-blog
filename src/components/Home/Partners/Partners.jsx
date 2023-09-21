@@ -52,7 +52,7 @@ const Partners = () => {
   };
 
   return (
-    <div className="partners">
+    <div className={styles.partners}>
       <Container fixed>
         <div className={styles.topContent}>
           <h2>{partners.homeTitle}</h2>
