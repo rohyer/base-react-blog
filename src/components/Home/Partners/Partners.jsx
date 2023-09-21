@@ -1,4 +1,4 @@
-import './Partners.css';
+import styles from './Partners.module.css';
 import Card3 from '../../Card3/Card3';
 import React from 'react';
 import { Container, Button } from '@mui/material';
@@ -54,19 +54,19 @@ const Partners = () => {
   return (
     <div className="partners">
       <Container fixed>
-        <div className="top-content">
+        <div className={styles.topContent}>
           <h2>{partners.homeTitle}</h2>
           <p>{partners.homeContent}</p>
         </div>
 
-        <div className="posts">
+        <div className={styles.posts}>
           {partnersPosts &&
             partnersPosts.map((data, index) => (
               <Card3 data={data} key={index} api="parceiros" />
             ))}
         </div>
 
-        <div className="bottom-content">{getLink()}</div>
+        <div className={styles.bottomContent}>{getLink()}</div>
       </Container>
     </div>
   );
