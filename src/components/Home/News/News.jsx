@@ -1,6 +1,7 @@
-import { Container } from '@mui/material';
 import React from 'react';
-import './News.css';
+import { Container } from '@mui/material';
+import Card1 from '../../Card1/Card1';
+import styles from './News.module.css';
 import { Link } from 'react-router-dom';
 
 const headers = {
@@ -51,9 +52,9 @@ const News = () => {
 
   if (news) {
     return (
-      <div className="news">
+      <div className={styles.news}>
         <Container fixed>
-          <div className="top-content">
+          <div className={styles.topContent}>
             <h2>{news.homeTitle}</h2>
             <p>{news.homeContent}</p>
           </div>
@@ -61,27 +62,11 @@ const News = () => {
           <div className="posts">
             {newsPosts &&
               newsPosts.map((item, index) => (
-                <Link
-                  key={index}
-                  className="post"
-                  to={`${import.meta.env.VITE_APP_ORIGIN_URL}/noticias/${
-                    item.attributes.slug
-                  }`}
-                >
-                  <img
-                    src={`${import.meta.env.VITE_APP_API_URL}${
-                      item.attributes.cardImage.data.attributes.url
-                    }`}
-                    alt="Imagem"
-                  />
-                  <div className="post-content">
-                    <p>{item.attributes.cardTitle}</p>
-                  </div>
-                </Link>
+                <Card1 data={item} api="noticias" />
               ))}
           </div>
 
-          <div className="bottom-content">{getLink()}</div>
+          <div className={styles.bottomContent}>{getLink()}</div>
         </Container>
       </div>
     );
