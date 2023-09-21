@@ -2,7 +2,8 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from '@mui/material/Container';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import './Services.css';
+import Card1 from '../../Card1/Card1';
+import styles from './Services.module.css';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -61,14 +62,14 @@ const Services = () => {
   };
 
   return (
-    <div className="services">
+    <div className={styles.services}>
       <Container fixed>
-        <div className="top-content">
+        <div className={styles.topContent}>
           <h2>{services.homeTitle}</h2>
           <p>{services.homeContent}</p>
         </div>
 
-        <div className="posts">
+        <div className={styles.posts}>
           <Swiper
             className="teste"
             modules={[Navigation, Pagination, Autoplay]}
@@ -95,29 +96,13 @@ const Services = () => {
             {servicesPosts &&
               servicesPosts.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <Link
-                    key={index}
-                    to={`${import.meta.env.VITE_APP_ORIGIN_URL}/servicos/${
-                      item.attributes.slug
-                    }`}
-                    className="post"
-                  >
-                    <img
-                      src={`${import.meta.env.VITE_APP_API_URL}${
-                        item.attributes.cardImage.data.attributes.url
-                      }`}
-                      alt="Imagem"
-                    />
-                    <div className="post-content">
-                      <p>{item.attributes.cardTitle}</p>
-                    </div>
-                  </Link>
+                  <Card1 data={item} api="servicos" />
                 </SwiperSlide>
               ))}
           </Swiper>
         </div>
 
-        <div className="bottom-content">{getLink()}</div>
+        <div className={styles.bottomContent}>{getLink()}</div>
       </Container>
     </div>
   );
