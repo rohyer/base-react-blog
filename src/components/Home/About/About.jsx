@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@mui/material';
 import { Link } from 'react-router-dom';
-import './About.css';
+import styles from './About.module.css';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -43,15 +43,15 @@ const About = () => {
   };
 
   return (
-    <section className="about">
+    <section className={styles.about}>
       <Container fixed>
-        <div className="content">
-          <div className="text">
+        <div className={styles.content}>
+          <div className={styles.text}>
             <h2>{aboutContent.homeTitle}</h2>
             <p>{aboutContent.homeContent}</p>
             {getLink()}
           </div>
-          <div className="img">
+          <div className={styles.img}>
             {aboutImage && (
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}${
