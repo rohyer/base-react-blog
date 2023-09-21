@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Card3.css';
+import styles from './Card3.module.css';
 import React from 'react';
 
 const Card3 = ({ data, api }) => {
@@ -23,14 +23,14 @@ const Card3 = ({ data, api }) => {
           key={data.id}
           to={`${window.location.origin}/${api}/${data.attributes.slug}`}
           target="_self"
-          className="post-partner"
+          className={styles.post}
         >
           {getPostCard(data)}
         </Link>
       );
     } else {
       return (
-        <div key={data.id} className="post-partner">
+        <div key={data.id} className={styles.post}>
           {getPostCard(data)}
         </div>
       );
