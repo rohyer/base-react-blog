@@ -1,8 +1,8 @@
-import './Partners.css';
-import Card3 from '../../components/Card3/Card3';
+import './AltPartners.css';
+import Card3 from '../../Card3/Card3';
 import React from 'react';
-import { Container, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { Container, Grid, Button } from '@mui/material';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -52,21 +52,22 @@ const Partners = () => {
   };
 
   return (
-    <div className="partners">
+    <div className="alt-partners">
       <Container fixed>
-        <div className="top-content">
-          <h2>{partners.homeTitle}</h2>
-          <p>{partners.homeContent}</p>
-        </div>
+        <Grid container spacing={2}>
+          <Grid item xs={12} md={4} className="left-content">
+            <h2>{partners.homeTitle}</h2>
+            <p>{partners.homeContent}</p>
+            {getLink()}
+          </Grid>
 
-        <div className="posts">
-          {partnersPosts &&
-            partnersPosts.map((data, index) => (
-              <Card3 data={data} key={index} api="parceiros" />
-            ))}
-        </div>
-
-        <div className="bottom-content">{getLink()}</div>
+          <Grid item xs={12} md={8} className="posts">
+            {partnersPosts &&
+              partnersPosts.map((data, index) => (
+                <Card3 data={data} key={index} api="parceiros" />
+              ))}
+          </Grid>
+        </Grid>
       </Container>
     </div>
   );

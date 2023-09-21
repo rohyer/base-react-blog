@@ -1,5 +1,5 @@
 import './Footer.css';
-import logo from '../../assets/react.svg';
+import logo from '../../../assets/react.svg';
 import React from 'react';
 import Grid from '@mui/material/Grid';
 import { Facebook, Instagram, YouTube, LinkedIn } from '@mui/icons-material';

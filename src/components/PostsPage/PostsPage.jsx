@@ -1,6 +1,6 @@
 import './PostsPage.css';
-import Card1 from '../../components/Card1/Card1';
-import Card3 from '../../components/Card3/Card3';
+import Card1 from '../Card1/Card1';
+import Card3 from '../Card3/Card3';
 import React from 'react';
 import { Container, Button } from '@mui/material';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
