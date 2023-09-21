@@ -1,15 +1,14 @@
-.alt-partners {
+.altPartners {
   background-color: #EEEEEE;
   padding: 60px 0px;
 }
 
-.alt-partners .left-content {
+.leftContent {
   display: flex;
-  flex-direction: column;
   justify-content: center;
 }
 
-.alt-partners h2 {
+.leftContent h2 {
   font-family: 'Montserrat', sans-serif;
   font-size: 32px;
   font-weight: 500;
@@ -21,12 +20,12 @@
   margin: 0px 0px 15px;
 }
 
-.alt-partners .left-content {
+.leftContent {
   max-width: 600px;
   margin: auto;
 }
 
-.alt-partners p {
+.leftContent p {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   font-weight: 400;
@@ -35,40 +34,40 @@
 }
 
 @media (min-width: 901px) {
-  .alt-partners .left-content {
+  .leftContent {
     align-items: flex-start;
   }
-  .alt-partners h2 {
+  .leftContent h2 {
     text-align: left;
   }
-  .alt-partners p {
+  .leftContent p {
     text-align: left;
   }
-  .alt-partners .posts {
+  .posts {
     justify-content: flex-start;
   }
 }
 @media (max-width: 900px) {
-  .alt-partners .left-content {
+  .leftContent {
     align-items: center;
   }
-  .alt-partners h2 {
+  .leftContent h2 {
     text-align: center;
   }
-  .alt-partners p {
+  .leftContent p {
     text-align: center;
   }
-  .alt-partners .posts {
+  .posts {
     justify-content: center;
   }
 }
 
-.alt-partners .posts {
+.posts {
   display: flex;
   flex-wrap: wrap;
 }
 
-.alt-partners .left-content a {
+.leftContent a {
   font-family: "Montserrat", sans-serif;
   font-size: 14px;
   font-weight: 700;

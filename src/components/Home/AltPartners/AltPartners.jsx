@@ -1,4 +1,4 @@
-import './AltPartners.css';
+import styles from './AltPartners.module.css';
 import Card3 from '../../Card3/Card3';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -52,16 +52,22 @@ const Partners = () => {
   };
 
   return (
-    <div className="alt-partners">
+    <div className={styles.altPartners}>
       <Container fixed>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={4} className="left-content">
+          <Grid
+            item
+            xs={12}
+            md={4}
+            direction="column"
+            className={styles.leftContent}
+          >
             <h2>{partners.homeTitle}</h2>
             <p>{partners.homeContent}</p>
             {getLink()}
           </Grid>
 
-          <Grid item xs={12} md={8} className="posts">
+          <Grid item xs={12} md={8} className={styles.posts}>
             {partnersPosts &&
               partnersPosts.map((data, index) => (
                 <Card3 data={data} key={index} api="parceiros" />
