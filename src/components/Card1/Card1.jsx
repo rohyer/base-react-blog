@@ -1,5 +1,5 @@
-import './Card1.css';
 import React from 'react';
+import styles from './Card1.module.css';
 import { Link } from 'react-router-dom';
 
 const Card1 = ({ data, api }) => {
@@ -12,7 +12,7 @@ const Card1 = ({ data, api }) => {
           }`}
           alt="Imagem"
         />
-        <div className="post-content">
+        <div>
           <p>{data.attributes.cardTitle}</p>
         </div>
       </>
@@ -27,14 +27,14 @@ const Card1 = ({ data, api }) => {
         <Link
           key={data.id}
           to={`${window.location.origin}/${api}/${data.attributes.slug}`}
-          className="post-news"
+          className={styles.post}
         >
           {getPostCard(data)}
         </Link>
       );
     } else {
       return (
-        <div key={data.id} className="post-news">
+        <div key={data.id} className={styles.post}>
           {getPostCard(data)}
         </div>
       );
