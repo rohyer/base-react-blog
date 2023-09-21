@@ -94,7 +94,7 @@ const Services = () => {
             }}
           >
             {servicesPosts &&
-              servicesPosts.map((item) => (
+              servicesPosts.map((item, index) => (
                 <SwiperSlide key={index}>
                   <Card1 data={item} api="servicos" />
                 </SwiperSlide>
