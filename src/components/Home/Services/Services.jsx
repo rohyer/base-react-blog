@@ -76,7 +76,7 @@ const Services = () => {
             navigation
             autoplay
             spaceBetween={30}
-            onSlideChange={() => console.log('slide change')}
+            // onSlideChange={() => console.log('slide change')}
             // onSwiper={(swiper) => console.log(swiper)}
             breakpoints={{
               0: {
