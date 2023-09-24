@@ -46,7 +46,7 @@ const AltAbout = () => {
     <section className={styles.about}>
       <Container fixed>
         <div className={styles.content}>
-          <div className={styles.img}>
+          <div className={`${styles.img} hidden-left-element`}>
             {altAboutImage && (
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}${
@@ -57,9 +57,13 @@ const AltAbout = () => {
             )}
           </div>
           <div className={styles.text}>
-            <h2>{altAboutContent.homeTitle}</h2>
-            <p>{altAboutContent.homeContent}</p>
-            {getLink()}
+            <h2 className="hidden-right-element">
+              {altAboutContent.homeTitle}
+            </h2>
+            <p className="hidden-right-element">
+              {altAboutContent.homeContent}
+            </p>
+            <div className="hidden-right-element">{getLink()}</div>
           </div>
         </div>
       </Container>

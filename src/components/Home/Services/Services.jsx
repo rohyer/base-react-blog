@@ -65,11 +65,11 @@ const Services = () => {
     <div className={styles.services}>
       <Container fixed>
         <div className={styles.topContent}>
-          <h2>{services.homeTitle}</h2>
-          <p>{services.homeContent}</p>
+          <h2 className="hidden-top-element">{services.homeTitle}</h2>
+          <p className="hidden-top-element">{services.homeContent}</p>
         </div>
 
-        <div className={styles.posts}>
+        <div className={`${styles.posts} hidden-top-element`}>
           <Swiper
             className="teste"
             modules={[Navigation, Pagination, Autoplay]}
@@ -102,7 +102,9 @@ const Services = () => {
           </Swiper>
         </div>
 
-        <div className={styles.bottomContent}>{getLink()}</div>
+        <div className={`${styles.bottomContent} hidden-top-element`}>
+          {getLink()}
+        </div>
       </Container>
     </div>
   );

@@ -46,12 +46,12 @@ const About = () => {
     <section className={styles.about}>
       <Container fixed>
         <div className={styles.content}>
-          <div className={styles.text}>
-            <h2>{aboutContent.homeTitle}</h2>
-            <p>{aboutContent.homeContent}</p>
-            {getLink()}
+          <div className={`${styles.text}`}>
+            <h2 className="hidden-left-element">{aboutContent.homeTitle}</h2>
+            <p className="hidden-left-element">{aboutContent.homeContent}</p>
+            <div className="hidden-left-element">{getLink()}</div>
           </div>
-          <div className={styles.img}>
+          <div className={`${styles.img} hidden-right-element`}>
             {aboutImage && (
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}${
