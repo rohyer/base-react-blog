@@ -1,13 +1,12 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Container } from '@mui/material';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import './Banner.css';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 
@@ -55,9 +54,10 @@ const Banner = () => {
     <section className="banner">
       <Container fixed>
         <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
+          modules={[Navigation, Autoplay]}
           navigation
           autoplay
+          speed={1000}
           pagination={{ clickable: true }}
           spaceBetween={50}
           slidesPerView={1}
