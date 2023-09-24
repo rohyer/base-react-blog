@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Header from './Components/Home/Header/Header';
 import Footer from './Components/Home/Footer/Footer';
@@ -8,6 +9,47 @@ import Post from './Components/Post/Post';
 import PageContact from './Components/PageContact/PageContact';
 
 function App() {
+  const [scrollProsition, setScrollPosition] = React.useState(0);
+  const [innerHeight, setInnerHeight] = React.useState(0);
+  const [elements, setElements] = React.useState(null);
+
+  React.useEffect(() => {
+    function getElementsPositions() {
+      const element = document.querySelectorAll(
+        '.hidden-left-element, .hidden-right-element, .hidden-top-element',
+      );
+      setElements(element);
+    }
+    function getInnerHeight() {
+      setInnerHeight(window.innerHeight);
+    }
+
+    getInnerHeight();
+    getElementsPositions();
+  }, []);
+
+  React.useEffect(() => {
+    function handleScroll() {
+      setScrollPosition(this.window.scrollY);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    function getElements() {
+      elements.forEach((element) => {
+        if (scrollProsition + innerHeight - 200 >= element.offsetTop) {
+          element.classList.add('show-element');
+        }
+      });
+    }
+
+    elements && getElements();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [scrollProsition]);
+
   return (
     <BrowserRouter>
       <Header />
