@@ -1,15 +1,24 @@
+/* 
 
-
-.banner .card {
+.banner {
   display: flex;
   background-color: #FFF;
   border-radius: 3px;
   box-shadow: 0px 6px 9px rgba(0, 0, 0, 0.2);
+  height: 500px;
+}
+
+.swiper {
+  height: 100%;
 }
 
 .banner .image {
-  position: relative;
+  height: 100%;
+  width: 130%;
+  margin: auto;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner .image img {
@@ -114,4 +123,4 @@
   .banner .swiper-button-prev::after, .banner .swiper-button-next::after {
     font-size: 30px !important;
   }
-}
+} */

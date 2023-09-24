@@ -74,45 +74,31 @@ const AltBanner = () => {
           modules={[Navigation, Pagination, Autoplay, Parallax]}
           navigation
           autoplay
-          parallax
+          speed={2000}
+          parallax={true}
+          watchSlidesProgress={true}
           pagination={{ clickable: true }}
           spaceBetween={0}
           slidesPerView={1}
-          // onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          getSwiper={setParallaxSwiper}
+          // onSlideChange={() => console.log(watchSlidesProgress)}
+          onSwiper={(swiper) => console.log(swiper.width)}
         >
+          <div
+            data-swiper-parallax-x="20%"
+            style={{
+              backgroundImage: `url(${import.meta.env.VITE_APP_API_URL}${
+                attributes.homeImage.data.attributes.url
+              })`,
+            }}
+            className="image"
+          ></div>
           {banners &&
             banners.map(({ attributes, id }) => (
               <SwiperSlide key={id}>
-                <div
-                  className="image"
-                  data-swiper-parallax-opacity={parallaxOpacity}
-                  style={{
-                    backgroundImage:
-                      'url(' +
-                      `${import.meta.env.VITE_APP_API_URL}${
-                        attributes.homeImage.data.attributes.url
-                      }` +
-                      ')',
-                  }}
-                  data-swiper-parallax="-23%"
-                >
-                  {/* <img
-                    src={`${import.meta.env.VITE_APP_API_URL}${
-                      attributes.homeImage.data.attributes.url
-                    }`}
-                    alt=""
-                  /> */}
-                  <div
-                    className="content"
-                    data-swiper-parallax="-300"
-                    data-swiper-parallax-duration="600"
-                  >
-                    <h2>{attributes.homeTitle}</h2>
-                    <p>{attributes.homeContent}</p>
-                    {getLink(attributes)}
-                  </div>
+                <div className="content">
+                  <h2>{attributes.homeTitle}</h2>
+                  <p>{attributes.homeContent}</p>
+                  {getLink(attributes)}
                 </div>
               </SwiperSlide>
             ))}
