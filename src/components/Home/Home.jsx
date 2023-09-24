@@ -11,7 +11,7 @@ import AltBanner from './AltBanner/AltBanner';
 const Home = () => {
   return (
     <>
-      <AltBanner />
+      <Banner />
       <About />
       <Services />
       <AltAbout />
