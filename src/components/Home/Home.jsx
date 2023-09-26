@@ -27,7 +27,6 @@ const Home = () => {
 
     getInnerHeight();
     getElementsPositions();
-    console.log('Home renderizada');
   }, []);
 
   React.useEffect(() => {
