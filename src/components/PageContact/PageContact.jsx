@@ -1,6 +1,6 @@
 import './PageContact.css';
 import React from 'react';
-import { Container, Button, Grid } from '@mui/material';
+import { Container, Button, Grid, TextField } from '@mui/material';
 // import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -35,7 +35,7 @@ const PageContact = ({ id }) => {
   return (
     <div className="page">
       <Container fixed>
-        <h1 className="inner-title--responsive">{page.innerTitle}</h1>
+        <h1 className="inner-title inner-title--single">{page.innerTitle}</h1>
 
         {image && (
           <img
@@ -46,7 +46,6 @@ const PageContact = ({ id }) => {
         )}
 
         <div className="inner-text">
-          <h1 className="inner-title--desktop">{page.innerTitle}</h1>
           <ReactMarkdown>{page.innerContent}</ReactMarkdown>
         </div>
       </Container>
@@ -63,15 +62,39 @@ const PageContact = ({ id }) => {
           </Grid>
           <Grid item xs={12} md={6}>
             <form action="">
-              <label htmlFor="name">Nome:</label>
-              <input type="text" name="name" id="name" />
-              <label htmlFor="email">E-mail:</label>
-              <input type="email" name="email" id="email" />
-              <label htmlFor="subject">Assunto:</label>
-              <input type="text" name="subject" id="subject" />
-              <label htmlFor="subject">Assunto:</label>
-              <textarea name="subject" id="subject" cols="30" rows="5" />
-              <input type="submit" value="Enviar" />
+              <TextField
+                id="name"
+                label="Nome"
+                variant="outlined"
+                margin="dense"
+                fullWidth
+              />
+              <TextField
+                id="email"
+                label="E-mail"
+                variant="outlined"
+                margin="dense"
+                fullWidth
+              />
+              <TextField
+                id="subject"
+                label="Assunto"
+                variant="outlined"
+                margin="dense"
+                fullWidth
+              />
+              <TextField
+                id="subject"
+                label="Mensagem"
+                variant="outlined"
+                margin="dense"
+                multiline={true}
+                fullWidth
+                rows={5}
+              />
+              <Button variant="contained" type="submit">
+                Enviar
+              </Button>
             </form>
           </Grid>
         </Grid>
