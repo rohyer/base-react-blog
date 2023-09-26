@@ -37,7 +37,7 @@ const Post = ({ collectionType }) => {
     <div className="page">
       {post.attributes && (
         <Container fixed>
-          <h1 className="inner-title--responsive">
+          <h1 className="inner-title inner-title--responsive">
             {post.attributes.innerTitle}
           </h1>
 
@@ -52,7 +52,7 @@ const Post = ({ collectionType }) => {
           )}
 
           <div className="inner-text">
-            <h1 className="inner-title--desktop">
+            <h1 className="inner-title inner-title--desktop">
               {post.attributes.innerTitle}
             </h1>
             <ReactMarkdown>{post.attributes.innerContent}</ReactMarkdown>
