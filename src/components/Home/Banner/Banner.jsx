@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Container } from '@mui/material';
 import { Navigation, Autoplay } from 'swiper/modules';
-import './Banner.css';
+import styles from './Banner.module.css';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -51,7 +51,7 @@ const Banner = () => {
   };
 
   return (
-    <section className="banner">
+    <section className={styles.banner}>
       <Container fixed>
         <Swiper
           modules={[Navigation, Autoplay]}
@@ -66,8 +66,8 @@ const Banner = () => {
         >
           {banners &&
             banners.map(({ attributes, id }) => (
-              <SwiperSlide key={id} className="card">
-                <div className="image">
+              <SwiperSlide key={id} className={styles.card}>
+                <div className={styles.image}>
                   <img
                     src={`${import.meta.env.VITE_APP_API_URL}${
                       attributes.homeImage.data.attributes.url
@@ -75,7 +75,7 @@ const Banner = () => {
                     alt=""
                   />
                 </div>
-                <div className="content">
+                <div className={styles.content}>
                   <h2>{attributes.homeTitle}</h2>
                   <p>{attributes.homeContent}</p>
                   {getLink(attributes)}
