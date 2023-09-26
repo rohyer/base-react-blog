@@ -1,5 +1,5 @@
 import styles from './AltPartners.module.css';
-import Card3 from '../../Card3/Card3';
+import Card3 from './../../Card3/Card3.jsx';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Button } from '@mui/material';
@@ -62,12 +62,17 @@ const Partners = () => {
             direction="column"
             className={styles.leftContent}
           >
-            <h2>{partners.homeTitle}</h2>
-            <p>{partners.homeContent}</p>
-            {getLink()}
+            <h2 className="hidden-left-element">{partners.homeTitle}</h2>
+            <p className="hidden-left-element">{partners.homeContent}</p>
+            <div className="hidden-left-element">{getLink()}</div>
           </Grid>
 
-          <Grid item xs={12} md={8} className={styles.posts}>
+          <Grid
+            item
+            xs={12}
+            md={8}
+            className={`${styles.posts} hidden-right-element`}
+          >
             {partnersPosts &&
               partnersPosts.map((data, index) => (
                 <Card3 data={data} key={index} api="parceiros" />
