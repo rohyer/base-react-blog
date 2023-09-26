@@ -55,18 +55,20 @@ const News = () => {
       <div className={styles.news}>
         <Container fixed>
           <div className={styles.topContent}>
-            <h2>{news.homeTitle}</h2>
-            <p>{news.homeContent}</p>
+            <h2 className="hidden-bottom-element">{news.homeTitle}</h2>
+            <p className="hidden-bottom-element">{news.homeContent}</p>
           </div>
 
-          <div className="posts">
+          <div className="posts hidden-bottom-element">
             {newsPosts &&
               newsPosts.map((item) => (
                 <Card1 data={item} api="noticias" key={item.id} />
               ))}
           </div>
 
-          <div className={styles.bottomContent}>{getLink()}</div>
+          <div className={`${styles.bottomContent} hidden-bottom-element`}>
+            {getLink()}
+          </div>
         </Container>
       </div>
     );

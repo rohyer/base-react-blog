@@ -55,18 +55,20 @@ const Partners = () => {
     <div className={styles.partners}>
       <Container fixed>
         <div className={styles.topContent}>
-          <h2>{partners.homeTitle}</h2>
-          <p>{partners.homeContent}</p>
+          <h2 className="hidden-bottom-element">{partners.homeTitle}</h2>
+          <p className="hidden-bottom-element">{partners.homeContent}</p>
         </div>
 
-        <div className={styles.posts}>
+        <div className={`${styles.posts} hidden-bottom-element`}>
           {partnersPosts &&
             partnersPosts.map((data, index) => (
               <Card3 data={data} key={index} api="parceiros" />
             ))}
         </div>
 
-        <div className={styles.bottomContent}>{getLink()}</div>
+        <div className={`${styles.bottomContent} hidden-bottom-element`}>
+          {getLink()}
+        </div>
       </Container>
     </div>
   );
