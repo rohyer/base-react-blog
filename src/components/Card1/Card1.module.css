@@ -37,6 +37,22 @@
   object-position: center;
 }
 
+/* .post img:first-child {
+  position: absolute;
+  opacity: 0;
+  transform: matrix(1.05, 0, 0, 1.05, 0, 0);
+}
+
+.post:hover img:last-child {
+  opacity: 0;
+  transform: matrix(1.05, 0, 0, 1.05, 0, 0);
+}
+
+.post:hover img:first-child {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+} */
+
 .post p {
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
