@@ -14,9 +14,12 @@ const Footer = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('http://localhost:1337/api/informacao', {
-        headers,
-      });
+      const data = await fetch(
+        'http://localhost:1337/api/informacao?populate=*',
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setPages({
         siteTitle: res.data.attributes.siteTitle,
