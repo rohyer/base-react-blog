@@ -1,0 +1,23 @@
+.hidden-bottom-element {
+  opacity: 0;
+  transform: translateY(100px);
+}
+.hidden-left-element {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+.hidden-right-element {
+  opacity: 0;
+  transform: translateX(150px);
+}
+
+.show-element {
+  animation: showAnimation 0.4s ease-out forwards;
+}
+
+@keyframes showAnimation {
+  to {
+    opacity: initial;
+    transform: initial;
+  }
+}
