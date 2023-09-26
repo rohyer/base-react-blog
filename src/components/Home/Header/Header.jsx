@@ -1,4 +1,4 @@
-import './Header.css';
+import styles from './Header.module.css';
 import logo from '../../../assets/react.svg';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
@@ -57,8 +57,8 @@ const Header = () => {
   const getLinkNavbar = (attributes, responsive) => {
     const link = attributes.homeButtonLink;
     const classNavbar = responsive
-      ? 'responsive-navbar-link'
-      : 'desktop-navbar-link';
+      ? styles.responsiveNavbarLink
+      : styles.desktopNavbarLink;
 
     if (link) {
       const target = attributes.homeTab ? '_blank' : '_self';
@@ -77,11 +77,24 @@ const Header = () => {
     }
   };
 
+  const handleScroll = () => {
+    const header = document.querySelector('header');
+    const scrollPosition = window.scrollY;
+
+    if (scrollPosition >= 100) {
+      header.classList.add(styles.scrolled);
+    } else {
+      header.classList.remove(styles.scrolled);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+
   return (
     <header>
       <Container fixed>
-        <div className="items">
-          <div className="logo">
+        <div className={styles.items}>
+          <div className={styles.logo}>
             <Link to={window.location.origin}>
               <img src={logo} alt="" />
             </Link>
@@ -98,6 +111,7 @@ const Header = () => {
             edge="start"
             color="inherit"
             aria-label="menu"
+            className={styles.buttonResponsiveNavbar}
             onClick={toggleDrawer('right', true)}
           >
             <Menu />
@@ -111,7 +125,7 @@ const Header = () => {
         onClose={toggleDrawer('right', false)}
       >
         <Close
-          className="responsive-menu-close"
+          className={styles.responsiveMenuClose}
           onClick={toggleDrawer('right', false)}
         />
 
@@ -121,7 +135,7 @@ const Header = () => {
           onClick={toggleDrawer('right', false)}
           onKeyDown={toggleDrawer('right', false)}
         >
-          <List className="list-responsive-navbar">
+          <List className={styles.listResponsiveNavbar}>
             {pages.map(({ attributes, id }) => (
               <ListItem key={id} disablePadding>
                 {getLinkNavbar(attributes, true)}
