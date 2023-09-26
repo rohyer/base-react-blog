@@ -57,7 +57,7 @@ const Page = ({ id, slug, posts }) => {
   return (
     <div className="page">
       <Container fixed>
-        <h1 className="inner-title--single">{page.innerTitle}</h1>
+        <h1 className="inner-title inner-title--single">{page.innerTitle}</h1>
 
         {image && (
           <img
