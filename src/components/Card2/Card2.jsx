@@ -6,18 +6,22 @@ const Card2 = ({ data, api }) => {
   const getPostCard = (data) => {
     return (
       <>
-        <img
-          src={`${import.meta.env.VITE_APP_API_URL}${
-            data.attributes.cardImage.data[0].attributes.url
-          }`}
-          alt="Imagem"
-        />
-        <img
-          src={`${import.meta.env.VITE_APP_API_URL}${
-            data.attributes.cardImage.data[1].attributes.url
-          }`}
-          alt="Imagem"
-        />
+        <div className={styles.firstImage}>
+          <img
+            src={`${import.meta.env.VITE_APP_API_URL}${
+              data.attributes.cardImage.data[0].attributes.url
+            }`}
+            alt="Imagem"
+          />
+        </div>
+        <div className={styles.secondImage}>
+          <img
+            src={`${import.meta.env.VITE_APP_API_URL}${
+              data.attributes.cardImage.data[1].attributes.url
+            }`}
+            alt="Imagem"
+          />
+        </div>
         <div className={styles.content}>
           <p>{data.attributes.cardTitle}</p>
         </div>

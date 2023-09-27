@@ -20,7 +20,7 @@
   box-shadow: 0px 15px 15px -15px #111;
 }
 
-.post img:nth-child(1) {
+/* .post img:nth-child(1) {
   position: absolute;
   opacity: 1;
   transform: matrix(1, 0, 0, 1, 0, 0);
@@ -37,7 +37,7 @@
 .post:hover img:nth-child(2) {
   opacity: 1;
   transform: matrix(1, 0, 0, 1, 0, 0);
-}
+} */
 
 .content {
   position: relative;
@@ -60,4 +60,36 @@
   text-align: center;
   color: #333333;
   margin: 30px 20px;
+}
+
+.firstImage {
+  position: absolute;
+  display: block;
+  overflow: hidden;
+  transition: all .6s;
+}
+
+.secondImage {
+  display: block;
+  overflow: hidden;
+  transition: all .6s;
+}
+
+
+.post .firstImage img {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+.post:hover .firstImage img {
+  opacity: 0;
+  transform: matrix(1.10, 0, 0, 1.10, 0, 0);
+}
+
+.post .secondImage img {
+  opacity: 0;
+  transform: matrix(1.10, 0, 0, 1.10, 0, 0);
+}
+.post:hover .secondImage img {
+  opacity: 1;
+  transform: matrix(1, 0, 0, 1, 0, 0);
 }
