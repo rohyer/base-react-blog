@@ -3,7 +3,7 @@ import styles from './Loading.module.css';
 
 const Loading = ({ loading }) => {
   React.useEffect(() => {
-    if (!loading)
+    if (!loading) {
       setTimeout(
         () =>
           document
@@ -11,6 +11,14 @@ const Loading = ({ loading }) => {
             .classList.add('hidden'),
         200,
       );
+      setTimeout(
+        () =>
+          document
+            .querySelector(`.${styles.whiteScreen}`)
+            .classList.add('display-none'),
+        500,
+      );
+    }
   }, [loading]);
 
   return (
