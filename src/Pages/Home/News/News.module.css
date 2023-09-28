@@ -33,10 +33,6 @@
   text-align: center;
   color: #333333;
 }
-/* 
-.news .swiper .swiper-wrapper {
-  justify-content: center;
-} */
 
 .posts {
   display: flex;
@@ -50,16 +46,40 @@
 }
 
 .bottomContent a {
-  font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 150px;
   font-size: 14px;
-  font-weight: 700;
-  font-style: normal;
+  font-weight: 600;
   text-transform: uppercase;
-  text-align: center;
-  color: #333333;
-  background-color: #FFFFFF;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  padding: 8px 20px;
-  margin: 10px 0px;
+  color: #333;
+  cursor: pointer;
+  height: 40px;
+  margin: 15px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  /* moz-transition: all .3s ease-in-out; */
+  -o-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.bottomContent a:hover {
+  background-position: 100% 0;
+  /* moz-transition: all .4s ease-in-out; */
+  -o-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.bottomContent a:focus {
+  outline: none;
+}
+
+.bottomContent a {
+  background-image: linear-gradient(to right, #EEEEEE, #EFEFEF, #FFFFFF, #FFFFFF);
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.2);
 }

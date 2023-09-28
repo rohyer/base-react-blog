@@ -59,8 +59,8 @@
   text-transform: uppercase;
   color: #333;
   cursor: pointer;
-  margin: 20px;
   height: 40px;
+  margin: 15px;
   text-align:center;
   border: none;
   background-size: 300% 100%;
@@ -71,7 +71,6 @@
 }
 
 .bottomContent a:hover {
-  color: #FFFFFF;
   background-position: 100% 0;
   /* moz-transition: all .4s ease-in-out; */
   -o-transition: all .3s ease-in-out;
@@ -84,6 +83,6 @@
 }
 
 .bottomContent a {
-  background-image: linear-gradient(to right, #FFFFFF, #FFFFFF, #848080, #424141);
+  background-image: linear-gradient(to right, #FFFFFF, #FEFEFE, #EEEEEE, #EEEEEE);
   box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.2);
 }
