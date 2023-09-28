@@ -3,7 +3,7 @@
   flex-direction: column;
   height: auto;
   background-color: #FFFFFF;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   margin-top: 15px;
   margin-bottom: 15px;
@@ -11,22 +11,8 @@
 }
 
 :global(.swiper-slide) .post:hover {
+  box-shadow: 0px 3px 9px rgba(0, 0, 0, 0.2);
   margin: 10px 0px 20px 0px;
-}
-
-:global(.posts) .post {
-  display: flex;
-  flex-direction: column;
-  width: 250px;
-  height: auto;
-  background-color: #FFFFFF;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
-  border-radius: 3px;
-  margin: 15px;
-  transition: all .25s;
-}
-:global(.posts) .post:hover {
-  margin: 10px 15px 20px;
 }
 
 .post img {
@@ -36,22 +22,6 @@
   object-fit: cover;
   object-position: center;
 }
-
-/* .post img:first-child {
-  position: absolute;
-  opacity: 0;
-  transform: matrix(1.05, 0, 0, 1.05, 0, 0);
-}
-
-.post:hover img:last-child {
-  opacity: 0;
-  transform: matrix(1.05, 0, 0, 1.05, 0, 0);
-}
-
-.post:hover img:first-child {
-  opacity: 1;
-  transform: matrix(1, 0, 0, 1, 0, 0);
-} */
 
 .post p {
   font-family: 'Montserrat', sans-serif;
