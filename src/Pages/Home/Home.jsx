@@ -8,6 +8,7 @@ import News from './News/News';
 import AltPartners from './AltPartners/AltPartners';
 import AltBanner from './AltBanner/AltBanner';
 import './Home.css';
+import Loading from '../../Components/Loading/Loading';
 
 const Home = () => {
   const [scrollProsition, setScrollPosition] = React.useState(0);

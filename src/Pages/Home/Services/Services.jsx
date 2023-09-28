@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from '@mui/material/Container';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import Card1 from '../../Card1/Card1';
+import Card1 from '../../../Components/Card1/Card1.jsx';
 import styles from './Services.module.css';
 
 // Import Swiper styles

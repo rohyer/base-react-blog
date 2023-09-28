@@ -33,7 +33,7 @@ const PageContact = ({ id }) => {
   }, [id]);
 
   return (
-    <div className="page">
+    <div className="page animateLeft">
       <Container fixed>
         <h1 className="inner-title inner-title--single">{page.innerTitle}</h1>
 

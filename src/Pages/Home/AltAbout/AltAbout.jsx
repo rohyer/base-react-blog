@@ -48,14 +48,13 @@ const AltAbout = () => {
         <div className={styles.content}>
           <div className={`${styles.img} hidden-left-element`}>
             {altAboutImage &&
-              altAboutImage.map((image) => (
                 <img
                   src={`${import.meta.env.VITE_APP_API_URL}${
-                    image.attributes.url
+                    altAboutImage.attributes.url
                   }`}
                   alt="Imagem"
                 />
-              ))}
+              }
           </div>
           <div className={styles.text}>
             <h2 className="hidden-right-element">

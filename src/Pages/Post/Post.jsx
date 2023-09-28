@@ -34,7 +34,7 @@ const Post = ({ collectionType }) => {
   }, []);
 
   return (
-    <div className="page">
+    <div className="page animateLeft">
       {post.attributes && (
         <Container fixed>
           <h1 className="inner-title inner-title--responsive">

@@ -1,5 +1,5 @@
 import styles from './Partners.module.css';
-import Card3 from '../../Card3/Card3';
+import Card3 from '../../../Components/Card3/Card3.jsx';
 import React from 'react';
 import { Container, Button } from '@mui/material';
 import { Link } from 'react-router-dom';

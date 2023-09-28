@@ -1,6 +1,4 @@
 import './Page.css';
-import Card1 from '../Card1/Card1';
-import Card3 from '../Card3/Card3';
 import React from 'react';
 import { Container, Button } from '@mui/material';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
@@ -10,7 +8,7 @@ const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
 };
 
-const Page = ({ id, slug, posts }) => {
+const Page = ({ id }) => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
   const [partnersPosts, setPartnersPosts] = React.useState([]);
@@ -40,22 +38,11 @@ const Page = ({ id, slug, posts }) => {
     };
 
     fetchData();
-
-    if (posts) fetchPostsData();
-  }, [id, slug, posts]);
-
-  const getRightCardComponent = (data) => {
-    if (slug === 'noticias') {
-      return <Card1 data={data} api="noticias" />;
-    } else if (slug === 'servicos') {
-      return <Card1 data={data} api="servicos" />;
-    } else if (slug === 'parceiros') {
-      return <Card3 data={data} api="parceiros" />;
-    }
-  };
+    fetchPostsData();
+  }, [id]);
 
   return (
-    <div className="page">
+    <div className="page animateLeft">
       <Container fixed>
         <h1 className="inner-title inner-title--single">{page.innerTitle}</h1>
 
@@ -71,16 +58,6 @@ const Page = ({ id, slug, posts }) => {
           <ReactMarkdown>{page.innerContent}</ReactMarkdown>
         </div>
       </Container>
-
-      {posts && (
-        <Container fixed>
-          <div className="posts">
-            {partnersPosts.map((data) => (
-              <div key={data.id}>{getRightCardComponent(data)}</div>
-            ))}
-          </div>
-        </Container>
-      )}
 
       <Container fixed>
         <Button

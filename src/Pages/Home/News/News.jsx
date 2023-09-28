@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from '@mui/material';
-import Card2 from '../../Card2/Card2';
+import Card2 from '../../../Components/Card2/Card2.jsx';
 import styles from './News.module.css';
 import { Link } from 'react-router-dom';
 

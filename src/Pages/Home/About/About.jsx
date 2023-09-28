@@ -53,14 +53,13 @@ const About = () => {
           </div>
           <div className={`${styles.img} hidden-right-element`}>
             {aboutImage &&
-              aboutImage.map((image) => (
                 <img
                   src={`${import.meta.env.VITE_APP_API_URL}${
-                    image.attributes.url
+                    aboutImage.attributes.url
                   }`}
                   alt="Imagem"
                 />
-              ))}
+              }
           </div>
         </div>
       </Container>
