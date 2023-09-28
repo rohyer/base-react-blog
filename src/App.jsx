@@ -1,33 +1,51 @@
 import React from 'react';
 import './App.css';
-import Header from './Components/Home/Header/Header';
-import Footer from './Components/Home/Footer/Footer';
-import Home from './Components/Home/Home';
+import Header from './Pages/Home/Header/Header';
+import Footer from './Pages/Home/Footer/Footer';
+import Home from './Pages/Home/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Page from './Components/Page/Page';
-import Post from './Components/Post/Post';
-import PageContact from './Components/PageContact/PageContact';
+import Page from './Pages/Page/Page';
+import Post from './Pages/Post/Post';
+import PageContact from './Pages/PageContact/PageContact';
+import Loading from './Components/Loading/Loading';
+import PageNews from './Pages/PageNews/PageNews';
+import PageServices from './Pages/PageServices/PageServices';
+import PagePartners from './Pages/PagePartners/PagePartners';
 
 function App() {
+  const [loading, setLoading] = React.useState(true);
+
+  React.useEffect(() => {
+    if (loading) {
+      document.querySelector('body').classList.add('overflow-hidden');
+    }
+    function handleLoad() {
+      setLoading(false);
+      document.querySelector('body').classList.remove('overflow-hidden');
+    }
+
+    window.addEventListener('load', handleLoad);
+
+    return () => window.removeEventListener('load', handleLoad);
+  }, []);
+
   return (
     <BrowserRouter>
+      <Loading loading={loading} />
       <Header />
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="quem-somos" element={<Page id={1} posts={false} />} />
-        <Route
-          path="noticias"
-          element={<Page id={2} slug="noticias" posts={true} />}
-        />
+        <Route path="/" element={<Home loading={loading} />} />
+        <Route path="quem-somos" element={<Page id={1} />} />
+        <Route path="noticias" element={<PageNews id={2} slug="noticias" />} />
         <Route path="cta" element={<Page id={3} />} posts={false} />
         <Route
           path="servicos"
-          element={<Page id={4} slug="servicos" posts={true} />}
+          element={<PageServices id={4} slug="servicos" />}
         />
         <Route
           path="parceiros"
-          element={<Page id={5} slug="parceiros" posts={true} />}
+          element={<PagePartners id={5} slug="parceiros" />}
         />
         <Route path="contato" element={<PageContact id={6} slug="contato" />} />
 
