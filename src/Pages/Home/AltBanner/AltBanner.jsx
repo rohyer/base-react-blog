@@ -51,16 +51,44 @@ const AltBanner = () => {
       const targetLink = attributes.homeTab ? '_blank' : '_self';
 
       return (
-        <a href={link} target={targetLink}>
-          {buttonText}
-        </a>
+        <div className={styles.link}>
+          <a href={link} target={targetLink}>
+            <svg
+              width="150px"
+              height="50px"
+              viewBox="0 0 180 60"
+              class="border"
+            >
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+            </svg>
+            <span>{buttonText}</span>
+          </a>
+        </div>
       );
     } else {
       if (buttonText)
         return (
-          <a href={attributes.slug} target="_self">
-            {buttonText}
-          </a>
+          <div className={styles.link}>
+            <a href={attributes.slug} target="_self">
+              <svg
+                width="150px"
+                height="50px"
+                viewBox="0 0 150 50"
+                class="border"
+              >
+                <polyline
+                  points="179,1 179,59 1,59 1,1 179,1"
+                  class="bg-line"
+                />
+                <polyline
+                  points="179,1 179,59 1,59 1,1 179,1"
+                  class="hl-line"
+                />
+              </svg>
+              <span>{buttonText}</span>
+            </a>
+          </div>
         );
     }
   };
@@ -96,7 +124,10 @@ const AltBanner = () => {
           {banners &&
             banners.map(({ attributes, id }) => (
               <SwiperSlide key={id}>
-                <div className={styles.content}>
+                <div
+                  className={styles.content}
+                  data-swiper-parallax-opacity={0}
+                >
                   <h2>{attributes.homeTitle}</h2>
                   <p>{attributes.homeContent}</p>
                   {getLink(attributes)}
