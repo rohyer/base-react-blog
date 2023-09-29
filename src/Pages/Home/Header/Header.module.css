@@ -53,8 +53,25 @@ header.scrolled {
     align-items: center;
   }
 
-  .desktopNavbarLink:hover::after {
+  :global(.nav-item), .desktopNavbarLink {
+    display: flex;
+    align-items: center;
+    height: 60px;
+  }
+
+  :global(.nav-item):hover .desktopNavbarLink::after {
     width: 100%;
+  }
+
+  :global(.nav-item) {
+    position: relative;
+    padding: 10px 0px;
+  }
+  
+  :global(.nav-item):hover :global(.second-level-navbar) {
+    opacity: 1;
+    transform: initial;
+    visibility: visible;
   }
 
   .buttonResponsiveNavbar {
@@ -102,7 +119,7 @@ header.scrolled {
 .desktopNavbarLink::after {
   content: "";
   position: absolute;
-  bottom: 0;
+  bottom: 15px;
   left: 0;
   right: 0;
   width: 0%;
