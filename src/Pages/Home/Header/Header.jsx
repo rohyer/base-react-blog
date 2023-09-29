@@ -13,6 +13,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Menu, Close } from '@mui/icons-material';
+import SecondLevelNavBar from '../../../Components/SecondLevelNavBar/SecondLevelNavBar';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -21,6 +22,7 @@ const headers = {
 //   identifier: 'guilhermerl.dev@gmail.com',
 //   password: 'Vg7gzkXf6y!kqDb'
 // };
+// http://localhost:1337/api/menus?fields[0]=menuTitle&fields[1]=slug&fields[2]=homeButtonLink&fields[3]=homeTab
 
 const Header = () => {
   const [pages, setPages] = useState([]);
@@ -30,12 +32,9 @@ const Header = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch(
-        'http://localhost:1337/api/paginas?fields[0]=menuTitle&fields[1]=slug&fields[2]=homeButtonLink&fields[3]=homeTab',
-        {
-          headers,
-        },
-      );
+      const data = await fetch('http://localhost:1337/api/menus?populate=*', {
+        headers,
+      });
       const res = await data.json();
       setPages(res.data);
     };
@@ -55,25 +54,29 @@ const Header = () => {
   };
 
   const getLinkNavbar = (attributes, responsive) => {
-    const link = attributes.homeButtonLink;
+    const link = attributes.link;
+    const target = attributes.tab ? '_blank' : '_self';
     const classNavbar = responsive
       ? styles.responsiveNavbarLink
       : styles.desktopNavbarLink;
 
     if (link) {
-      const target = attributes.homeTab ? '_blank' : '_self';
-
-      return (
-        <Link to={link} target={target} className={classNavbar}>
-          {attributes.menuTitle}
-        </Link>
-      );
-    } else {
-      return (
-        <a to={attributes.slug} target="_self" className={classNavbar}>
-          {attributes.menuTitle}
-        </a>
-      );
+      if (!attributes.secondLevel) {
+        return (
+          <Link to={link} target={target} className={classNavbar}>
+            {attributes.title}
+          </Link>
+        );
+      } else {
+        return (
+          <>
+            <Link to="#" target={target} className={classNavbar}>
+              {attributes.title}
+            </Link>
+            <SecondLevelNavBar />
+          </>
+        );
+      }
     }
   };
 
@@ -102,7 +105,9 @@ const Header = () => {
 
           <ul>
             {pages.map(({ attributes, id }) => (
-              <li key={id}>{getLinkNavbar(attributes, false)}</li>
+              <li className="nav-item" key={id}>
+                {getLinkNavbar(attributes, false)}
+              </li>
             ))}
           </ul>
 
