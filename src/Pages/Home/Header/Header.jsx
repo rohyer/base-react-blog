@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Menu, Close } from '@mui/icons-material';
-import SecondLevelNavBar from '../../../Components/SecondLevelNavBar/SecondLevelNavBar';
+import SecondLevelNavBarBox from '../../../Components/SecondLevelNavBarBox/SecondLevelNavBarBox';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -63,17 +63,24 @@ const Header = () => {
     if (link) {
       if (!attributes.secondLevel) {
         return (
-          <Link to={link} target={target} className={classNavbar}>
+          <Link
+            to={link}
+            target={target}
+            className={classNavbar + ' ' + styles.desktopNavbarLinkBorder}
+          >
             {attributes.title}
           </Link>
         );
       } else {
         return (
           <>
-            <Link to="#" target={target} className={classNavbar}>
+            <Link to={link} target={target} className={classNavbar}>
               {attributes.title}
             </Link>
-            <SecondLevelNavBar />
+            <SecondLevelNavBarBox
+              slug={attributes.paginas.data[0].attributes.slug}
+              pages={attributes.paginas.data}
+            />
           </>
         );
       }
