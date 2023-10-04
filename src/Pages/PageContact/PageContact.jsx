@@ -30,7 +30,7 @@ const PageContact = ({ id }) => {
     fetchData();
 
     window.scrollTo(0, 0);
-  }, [id]);
+  }, []);
 
   return (
     <div className="page animateLeft">
