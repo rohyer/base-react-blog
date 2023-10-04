@@ -4,15 +4,15 @@ body.overflow-hidden {
 }
 
 .animateLeft {
-  opacity: 0;
-  transform: translateX(-20px);
-  animation: animateLeft .6s forwards;
+  opacity: initial;
+  transform: initial;
+  animation: animateLeft .6s backwards .25s;
 }
 
 @keyframes animateLeft {
-  to {
-    opacity: initial;
-    transform: initial;
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
   }
 }
 
@@ -21,7 +21,15 @@ body.overflow-hidden {
 .page {
   display: grid;
   min-height: 100vh;
+  /* opacity: 0;
+  transform: translateX(-20px);
+  transition: all 1s; */
 }
+
+/* .page-show {
+  opacity: 1;
+  transform: initial;
+} */
 
 @media (min-width: 992px) {
   .page {
