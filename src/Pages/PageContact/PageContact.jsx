@@ -12,6 +12,12 @@ const headers = {
 const PageContact = ({ id }) => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
+  const [form, setForm] = React.useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
   let navigate = useNavigate();
 
   React.useEffect(() => {
@@ -31,6 +37,16 @@ const PageContact = ({ id }) => {
 
     window.scrollTo(0, 0);
   }, []);
+
+  const handleChange = ({ target }) => {
+    setForm({ ...form, [target.id]: target.value });
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    setForm({ name: '', email: '', subject: '', message: '' });
+  };
 
   return (
     <div className="page animateLeft">
@@ -61,13 +77,15 @@ const PageContact = ({ id }) => {
             ></iframe>
           </Grid>
           <Grid item xs={12} md={6}>
-            <form action="">
+            <form onSubmit={handleSubmit} action="">
               <TextField
                 id="name"
                 label="Nome"
                 variant="outlined"
                 margin="dense"
                 fullWidth
+                value={form.name}
+                onChange={handleChange}
               />
               <TextField
                 id="email"
@@ -75,6 +93,8 @@ const PageContact = ({ id }) => {
                 variant="outlined"
                 margin="dense"
                 fullWidth
+                value={form.email}
+                onChange={handleChange}
               />
               <TextField
                 id="subject"
@@ -82,15 +102,19 @@ const PageContact = ({ id }) => {
                 variant="outlined"
                 margin="dense"
                 fullWidth
+                value={form.subject}
+                onChange={handleChange}
               />
               <TextField
-                id="subject"
+                id="message"
                 label="Mensagem"
                 variant="outlined"
                 margin="dense"
                 multiline={true}
                 fullWidth
                 rows={5}
+                value={form.message}
+                onChange={handleChange}
               />
               <Button variant="contained" type="submit">
                 Enviar
