@@ -60,13 +60,7 @@ const Footer = () => {
               </a>
             </Grid>
 
-            <Grid
-              item
-              xs={12}
-              md={4}
-              direction="column"
-              className="footer-contact"
-            >
+            <Grid item xs={12} md={4} className="footer-contact">
               <div className="footer-numbers">
                 <a
                   href={pages.whatsappLink}
