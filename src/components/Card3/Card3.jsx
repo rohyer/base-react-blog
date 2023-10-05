@@ -7,7 +7,7 @@ const Card3 = ({ data, api }) => {
     return (
       <img
         src={`${import.meta.env.VITE_APP_API_URL}${
-          data.attributes.cardImage.data.attributes.url
+          data.attributes.cardImage.data.attributes.formats.small.url
         }`}
         alt="Imagem"
       />

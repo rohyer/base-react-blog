@@ -9,7 +9,7 @@ const Card2 = ({ data, api }) => {
         <div className={styles.firstImage}>
           <img
             src={`${import.meta.env.VITE_APP_API_URL}${
-              data.attributes.cardImage.data[0].attributes.url
+              data.attributes.cardImage.data[0].attributes.formats.small.url
             }`}
             alt="Imagem"
           />
@@ -17,7 +17,7 @@ const Card2 = ({ data, api }) => {
         <div className={styles.secondImage}>
           <img
             src={`${import.meta.env.VITE_APP_API_URL}${
-              data.attributes.cardImage.data[1].attributes.url
+              data.attributes.cardImage.data[1].attributes.formats.small.url
             }`}
             alt="Imagem"
           />
