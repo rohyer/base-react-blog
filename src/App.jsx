@@ -11,6 +11,7 @@ import Loading from './Components/Loading/Loading';
 import PageNews from './Pages/PageNews/PageNews';
 import PageServices from './Pages/PageServices/PageServices';
 import PagePartners from './Pages/PagePartners/PagePartners';
+import PostNews from './Pages/PostNews/PostNews';
 
 function App() {
   const [loading, setLoading] = React.useState(true);
@@ -51,7 +52,7 @@ function App() {
 
         <Route
           path="noticias/:slug"
-          element={<Post collectionType="noticias" />}
+          element={<PostNews collectionType="noticias" />}
         />
         <Route
           path="servicos/:slug"
