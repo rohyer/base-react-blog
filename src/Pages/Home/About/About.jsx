@@ -55,7 +55,7 @@ const About = () => {
             {aboutImage && (
               <img
                 src={`${import.meta.env.VITE_APP_API_URL}${
-                  aboutImage.attributes.formats.thumbnail.url
+                  aboutImage.attributes.formats.small.url
                 }`}
                 alt="Imagem"
               />
