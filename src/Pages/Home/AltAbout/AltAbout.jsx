@@ -47,14 +47,14 @@ const AltAbout = () => {
       <Container fixed>
         <div className={styles.content}>
           <div className={`${styles.img} hidden-left-element`}>
-            {altAboutImage &&
-                <img
-                  src={`${import.meta.env.VITE_APP_API_URL}${
-                    altAboutImage.attributes.url
-                  }`}
-                  alt="Imagem"
-                />
-              }
+            {altAboutImage && (
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL}${
+                  altAboutImage.attributes.formats.small.url
+                }`}
+                alt="Imagem"
+              />
+            )}
           </div>
           <div className={styles.text}>
             <h2 className="hidden-right-element">

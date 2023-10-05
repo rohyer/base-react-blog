@@ -52,14 +52,14 @@ const About = () => {
             <div className="hidden-left-element">{getLink()}</div>
           </div>
           <div className={`${styles.img} hidden-right-element`}>
-            {aboutImage &&
-                <img
-                  src={`${import.meta.env.VITE_APP_API_URL}${
-                    aboutImage.attributes.url
-                  }`}
-                  alt="Imagem"
-                />
-              }
+            {aboutImage && (
+              <img
+                src={`${import.meta.env.VITE_APP_API_URL}${
+                  aboutImage.attributes.formats.thumbnail.url
+                }`}
+                alt="Imagem"
+              />
+            )}
           </div>
         </div>
       </Container>
