@@ -6,6 +6,8 @@ import ReactMarkdown from 'react-markdown';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, FreeMode, Autoplay } from 'swiper/modules';
 import { useNavigate, useParams } from 'react-router-dom';
+import PhotoSwipeLightbox from 'photoswipe/lightbox';
+import 'photoswipe/style.css';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -34,12 +36,24 @@ const PostNews = ({ collectionType }) => {
       const res = await data.json();
       setPost(res.data[0]);
       setPostImage(res.data[0].attributes.innerImage.data);
-      setImagesGallery(res.data[0].attributes.cardImage.data);
+      setImagesGallery(res.data[0].attributes.gallery.data);
     };
 
     fetchData();
 
+    let lightbox = new PhotoSwipeLightbox({
+      gallery: '#my-test-gallery',
+      children: 'a',
+      pswpModule: () => import('photoswipe'),
+    });
+    lightbox.init();
+
     window.scrollTo(0, 0);
+
+    return () => {
+      lightbox.destroy();
+      lightbox = null;
+    };
   }, []);
 
   return (
@@ -70,41 +84,29 @@ const PostNews = ({ collectionType }) => {
       )}
 
       {imagesGallery && (
-        <Container maxWidth="xl" disableGutters>
-          <Swiper
-            className="gallery-images"
-            freeMode
-            autoplay
-            modules={[FreeMode, Autoplay]}
-            spaceBetween={0}
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
-            breakpoints={{
-              0: {
-                slidesPerView: 1,
-              },
-              576: {
-                slidesPerView: 2,
-              },
-              992: {
-                slidesPerView: 3,
-              },
-            }}
-          >
-            {imagesGallery.map((item, index) => (
-              <SwiperSlide key={index}>
-                <a href="#">
-                  <img
-                    src={`${import.meta.env.VITE_APP_API_URL}${
-                      item.attributes.formats.small.url
-                    }`}
-                    alt=""
-                  />
-                </a>
-                {/* <Card1 data={item} api="servicos" /> */}
-              </SwiperSlide>
+        <Container fixed>
+          <h2>Galeria</h2>
+          <div className="pswp-gallery" id="my-test-gallery">
+            {imagesGallery.map((image, index) => (
+              <a
+                href={`${import.meta.env.VITE_APP_API_URL}${
+                  image.attributes.url
+                }`}
+                data-pswp-width={`${image.attributes.width}`}
+                data-pswp-height={`${image.attributes.height}`}
+                key={index}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={`${import.meta.env.VITE_APP_API_URL}${
+                    image.attributes.formats.small.url
+                  }`}
+                  alt=""
+                />
+              </a>
             ))}
-          </Swiper>
+          </div>
         </Container>
       )}
 
