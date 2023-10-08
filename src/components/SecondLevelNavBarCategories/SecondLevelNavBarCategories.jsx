@@ -41,7 +41,7 @@ const SecondLevelNavBarCategories = () => {
         {categories &&
           categories.map((category) => (
             <li key={category.id}>
-              <Link>{category.attributes.title}</Link>
+              <Link to={`${import.meta.env.VITE_APP_ORIGIN_URL}/categoria/${category.attributes.slug}`}>{category.attributes.title}</Link>
             </li>
           ))}
       </ul>
