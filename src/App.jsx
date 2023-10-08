@@ -12,6 +12,7 @@ import PageNews from './Pages/PageNews/PageNews';
 import PageServices from './Pages/PageServices/PageServices';
 import PagePartners from './Pages/PagePartners/PagePartners';
 import PostNews from './Pages/PostNews/PostNews';
+import PageCategory from './Pages/PageCategory/PageCategory';
 
 function App() {
   const [loading, setLoading] = React.useState(true);
@@ -49,7 +50,7 @@ function App() {
           element={<PagePartners id={5} slug="parceiros" />}
         />
         <Route path="contato" element={<PageContact id={6} slug="contato" />} />
-
+        <Route path="categoria/:slug" element={<PageCategory />} />
         <Route
           path="noticias/:slug"
           element={<PostNews collectionType="noticias" />}
