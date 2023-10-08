@@ -20,7 +20,7 @@ body.overflow-hidden {
 /* Pages */
 .page {
   display: grid;
-  min-height: 100vh;
+  min-height: 75vh;
   /* opacity: 0;
   transform: translateX(-20px);
   transition: all 1s; */
@@ -33,12 +33,12 @@ body.overflow-hidden {
 
 @media (min-width: 992px) {
   .page {
-    padding: 150px 0px;
+    padding: 150px 0px 30px;
   }
 }
 @media (max-width: 991px) {
   .page {
-    padding: 75px 0px;
+    padding: 75px 0px 30px;
   }
 }
 
