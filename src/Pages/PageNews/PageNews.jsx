@@ -13,10 +13,46 @@ const PageNews = ({ id, slug }) => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
   const [partnersPosts, setPartnersPosts] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const [p, setP] = React.useState(1);
   let navigate = useNavigate();
 
+  const fetchDataInitial = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        `http://localhost:1337/api/${slug}?pagination[page]=${p}&pagination[pageSize]=2&populate=*`,
+        {
+          headers,
+        },
+      );
+      const data = await response.json();
+
+      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
+      setP((prevP) => prevP + 1);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight ||
+      isLoading
+    ) {
+      return;
+    }
+    fetchDataInitial();
+  };
+
   React.useEffect(() => {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     const fetchData = async () => {
       const data = await fetch(
@@ -29,18 +65,28 @@ const PageNews = ({ id, slug }) => {
       setPage(res.data.attributes);
       setImage(res.data.attributes.innerImage.data);
     };
-
-    const fetchPostsData = async () => {
-      const data = await fetch(`http://localhost:1337/api/${slug}?populate=*`, {
-        headers,
-      });
-      const res = await data.json();
-      setPartnersPosts(res.data);
-    };
-
     fetchData();
-    fetchPostsData();
+
+    fetchDataInitial();
+
+    // const fetchPostsData = async () => {
+    //   const data = await fetch(
+    //     `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6&populate=*`,
+    //     {
+    //       headers,
+    //     },
+    //   );
+    //   const res = await data.json();
+    //   setPartnersPosts(res.data);
+    // };
+
+    // fetchPostsData();
   }, []);
+
+  React.useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isLoading]);
 
   return (
     <div className="page animateLeft">
@@ -68,6 +114,8 @@ const PageNews = ({ id, slug }) => {
             </div>
           ))}
         </div>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>Error: {error.message}</p>}
       </Container>
 
       <Container fixed className="center-items">
