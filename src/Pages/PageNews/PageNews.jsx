@@ -70,7 +70,7 @@ const PageNews = ({ id, slug }) => {
         </div>
       </Container>
 
-      <Container fixed>
+      <Container fixed className="center-items">
         <Button
           className="back-btn"
           variant="contained"
