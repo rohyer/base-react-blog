@@ -19,17 +19,10 @@ body.overflow-hidden {
 
 /* Pages */
 .page {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   min-height: 75vh;
-  /* opacity: 0;
-  transform: translateX(-20px);
-  transition: all 1s; */
 }
-
-/* .page-show {
-  opacity: 1;
-  transform: initial;
-} */
 
 @media (min-width: 992px) {
   .page {
@@ -43,8 +36,36 @@ body.overflow-hidden {
 }
 
 .page .back-btn {
-  background-color: #DDDDDD;
-  padding: 5px 30px;
+  font-family: 'Montserrat', sans-serif;
+  min-width: 150px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #333;
+  cursor: pointer;
+  height: 40px;
+  text-align:center;
+  border: none;
+  background-size: 300% 100%;
+  /* moz-transition: all .3s ease-in-out; */
+  -o-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  background-image: linear-gradient(to right, #EEEEEE, #EFEFEF, #FFFFFF, #FFFFFF);
+  box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.2);
+  margin: 30px 0px 0px;
+}
+
+.page .back-btn:hover {
+  background-position: 100% 0;
+  /* moz-transition: all .4s ease-in-out; */
+  -o-transition: all .3s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.center-items {
+  text-align: center;
 }
 .page .back-btn:hover {
   background-color: #DCDCDC;
@@ -62,9 +83,8 @@ body.overflow-hidden {
     width: 40%;
     height: auto;
     filter: drop-shadow(0 4px 4px rgba(0,0,0,.25));
-    border: 5px solid #FFFFFF;
     border-radius: 3px;
-    margin: 0px 0px 20px 20px;
+    margin: 0px 0px 30px 30px;
   }
 }
 @media (max-width: 575px) {
@@ -79,7 +99,6 @@ body.overflow-hidden {
     width: 100%;
     height: auto;
     filter: drop-shadow(0 4px 4px rgba(0,0,0,.25));;
-    border: 5px solid #FFFFFF;
     border-radius: 3px;
     margin-bottom: 20px;
   }
