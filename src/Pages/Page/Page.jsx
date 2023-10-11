@@ -59,7 +59,7 @@ const Page = ({ id }) => {
         </div>
       </Container>
 
-      <Container fixed>
+      <Container className='center-items' fixed>
         <Button
           className="back-btn"
           variant="contained"
