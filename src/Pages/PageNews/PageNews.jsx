@@ -10,6 +10,7 @@ const headers = {
 };
 
 const PageNews = ({ id, slug }) => {
+  const [pageCount, setPageCount] = React.useState(null);
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
   const [partnersPosts, setPartnersPosts] = React.useState([]);
@@ -24,7 +25,7 @@ const PageNews = ({ id, slug }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=${p}&pagination[pageSize]=2&populate=*`,
+        `http://localhost:1337/api/${slug}?pagination[page]=${p}&pagination[pageSize]=3&populate=*`,
         {
           headers,
         },
@@ -33,6 +34,7 @@ const PageNews = ({ id, slug }) => {
 
       setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
       setP((prevP) => prevP + 1);
+      console.log("Teste");
     } catch (error) {
       setError(error);
     } finally {
@@ -42,12 +44,14 @@ const PageNews = ({ id, slug }) => {
 
   const handleScroll = () => {
     if (
-      window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight ||
-      isLoading
+      window.scrollY + window.innerHeight - 200 < document.querySelector('.posts').offsetHeight + document.querySelector('.posts').offsetTop || isLoading
+      // window.innerHeight + document.documentElement.scrollTop !==
+      //   document.documentElement.offsetHeight ||
+      // isLoading
     ) {
       return;
     }
+    
     fetchDataInitial();
   };
 
@@ -65,8 +69,19 @@ const PageNews = ({ id, slug }) => {
       setPage(res.data.attributes);
       setImage(res.data.attributes.innerImage.data);
     };
-    fetchData();
 
+    const fetchPageCount = async () => {
+      const data = await fetch(
+        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=3&populate=*`,
+        {
+          headers,
+        },
+      );
+      const res = await data.json();
+      setPageCount(res.meta.pagination.pageCount);
+    };
+    fetchData();
+    fetchPageCount();
     fetchDataInitial();
 
     // const fetchPostsData = async () => {
