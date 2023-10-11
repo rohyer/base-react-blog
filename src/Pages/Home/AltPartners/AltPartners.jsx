@@ -56,6 +56,7 @@ const Partners = () => {
       <Container fixed>
         <Grid container spacing={2}>
           <Grid
+            container
             item
             xs={12}
             md={4}
