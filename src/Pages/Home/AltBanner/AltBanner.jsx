@@ -57,10 +57,10 @@ const AltBanner = () => {
               width="150px"
               height="50px"
               viewBox="0 0 180 60"
-              class="border"
+              className="border"
             >
-              <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
-              <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" className="bg-line" />
+              <polyline points="179,1 179,59 1,59 1,1 179,1" className="hl-line" />
             </svg>
             <span>{buttonText}</span>
           </a>
@@ -75,15 +75,15 @@ const AltBanner = () => {
                 width="150px"
                 height="50px"
                 viewBox="0 0 150 50"
-                class="border"
+                className="border"
               >
                 <polyline
                   points="179,1 179,59 1,59 1,1 179,1"
-                  class="bg-line"
+                  className="bg-line"
                 />
                 <polyline
                   points="179,1 179,59 1,59 1,1 179,1"
-                  class="hl-line"
+                  className="hl-line"
                 />
               </svg>
               <span>{buttonText}</span>
