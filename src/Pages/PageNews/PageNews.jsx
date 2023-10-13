@@ -18,10 +18,13 @@ const PageNews = ({ id, slug }) => {
   const [error, setError] = React.useState(null);
   const [p, setP] = React.useState(1);
   let navigate = useNavigate();
+  let wait = false;
 
   const fetchDataInitial = async () => {
+    wait = true;
     setIsLoading(true);
     setError(null);
+    console.log(p);
 
     try {
       const response = await fetch(
@@ -33,13 +36,16 @@ const PageNews = ({ id, slug }) => {
       const data = await response.json();
 
       setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
-      setP((prevP) => prevP + 1);
-      console.log("Teste");
+      setP(p + 1);
     } catch (error) {
       setError(error);
     } finally {
-      setIsLoading(false);
+      setTimeout(() => {
+        wait = false
+        setIsLoading(false)
+      }, 1000);
     }
+    
   };
 
   const handleScroll = () => {
@@ -50,9 +56,10 @@ const PageNews = ({ id, slug }) => {
       // isLoading
     ) {
       return;
+    } else if (!isLoading) {
+      fetchDataInitial();
     }
     
-    fetchDataInitial();
   };
 
   React.useEffect(() => {
@@ -82,7 +89,7 @@ const PageNews = ({ id, slug }) => {
     };
     fetchData();
     fetchPageCount();
-    fetchDataInitial();
+    // fetchDataInitial();
 
     // const fetchPostsData = async () => {
     //   const data = await fetch(
