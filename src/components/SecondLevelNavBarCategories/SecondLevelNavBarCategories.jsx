@@ -9,7 +9,6 @@ const headers = {
 
 const SecondLevelNavBarCategories = () => {
   const [categories, setCategories] = React.useState([]);
-  const [newsPosts, setNewsPosts] = React.useState([]);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -20,19 +19,7 @@ const SecondLevelNavBarCategories = () => {
       setCategories(json.data);
     };
 
-    const fetchPostsData = async () => {
-      const response = await fetch(
-        import.meta.env.VITE_APP_API_URL + '/api/noticias?populate=*',
-        {
-          headers,
-        },
-      );
-      const json = await response.json();
-      setNewsPosts(json.data);
-    };
-
     fetchData();
-    fetchPostsData();
   }, []);
 
   return (
