@@ -41,30 +41,16 @@ const SecondLevelNavBarCategories = () => {
         {categories &&
           categories.map((category) => (
             <li key={category.id}>
-              <Link to={`${import.meta.env.VITE_APP_ORIGIN_URL}/categoria/${category.attributes.slug}`}>{category.attributes.title}</Link>
+              <Link
+                to={`${import.meta.env.VITE_APP_ORIGIN_URL}/categoria/${
+                  category.attributes.slug
+                }`}
+              >
+                {category.attributes.title}
+              </Link>
             </li>
           ))}
       </ul>
-      <div className={styles.posts}>
-        {newsPosts &&
-          newsPosts.slice(0, 2).map((item) => (
-            <Link
-              to={`${window.location.origin}/noticias/${item.attributes.slug}`}
-              className={styles.post}
-              key={item.id}
-            >
-              <img
-                src={`${import.meta.env.VITE_APP_API_URL}${
-                  item.attributes.cardImage.data[0].attributes.url
-                }`}
-                alt="Imagem"
-              />
-              <div className={styles.content}>
-                <p>{item.attributes.cardTitle}</p>
-              </div>
-            </Link>
-          ))}
-      </div>
     </>
   );
 };

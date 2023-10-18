@@ -55,10 +55,6 @@ header.scrolled {
     padding: 0;
   }
 
-  :global(.nav-item):nth-child(2) {
-    position: initial;
-  }
-
   :global(.nav-item), .desktopNavbarLink {
     display: flex;
     align-items: center;
