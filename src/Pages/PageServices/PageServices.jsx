@@ -13,6 +13,10 @@ const PageServices = ({ id, slug, posts }) => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
   const [partnersPosts, setPartnersPosts] = React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [error, setError] = React.useState(null);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [pageCount, setPageCount] = React.useState(null);
   let navigate = useNavigate();
 
   React.useEffect(() => {
@@ -30,17 +34,56 @@ const PageServices = ({ id, slug, posts }) => {
       setImage(res.data.attributes.innerImage.data);
     };
 
-    const fetchPostsData = async () => {
-      const data = await fetch(`http://localhost:1337/api/${slug}?populate=*`, {
-        headers,
-      });
+    const initialFetchPosts = async () => {
+      const response = await fetch(
+        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
+        {
+          headers,
+        },
+      );
+      const data = await response.json();
+
+      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
+      setCurrentPage((currentPage) => currentPage + 1);
+    };
+
+    const fetchPageCount = async () => {
+      const data = await fetch(
+        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6&populate=*`,
+        {
+          headers,
+        },
+      );
       const res = await data.json();
-      setPartnersPosts(res.data);
+      setPageCount(res.meta.pagination.pageCount);
     };
 
     fetchData();
-    fetchPostsData();
+    initialFetchPosts();
+    fetchPageCount();
   }, []);
+
+  const handleClick = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
+        {
+          headers,
+        },
+      );
+      const data = await response.json();
+
+      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+      setCurrentPage((currentPage) => currentPage + 1);
+    }
+  };
 
   return (
     <div className="page animateLeft">
@@ -68,6 +111,22 @@ const PageServices = ({ id, slug, posts }) => {
             </div>
           ))}
         </div>
+
+        {isLoading && <p>Carregando...</p>}
+        {error && <p>Error: {error.message}</p>}
+      </Container>
+
+      <Container fixed className="center-items">
+        {currentPage <= pageCount && (
+          <Button
+            className="pagination-btn"
+            variant="contained"
+            color="inherit"
+            onClick={handleClick}
+          >
+            Ver mais
+          </Button>
+        )}
       </Container>
 
       <Container fixed className="center-items">
