@@ -85,9 +85,6 @@ const PageNews = ({ id, slug }) => {
     }
   };
 
-  currentPage && console.log('Atual' + currentPage);
-  pageCount && console.log('Contador' + pageCount);
-
   return (
     <div className="page animateLeft">
       <Container fixed>
@@ -116,10 +113,12 @@ const PageNews = ({ id, slug }) => {
         </div>
         {isLoading && <p>Carregando...</p>}
         {error && <p>Error: {error.message}</p>}
+      </Container>
 
+      <Container fixed className="center-items">
         {currentPage <= pageCount && (
           <Button
-            className="back-btn"
+            className="pagination-btn"
             variant="contained"
             color="inherit"
             onClick={handleClick}
