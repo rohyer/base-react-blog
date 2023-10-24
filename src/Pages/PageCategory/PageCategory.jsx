@@ -12,6 +12,10 @@ const headers = {
 const PageCategory = () => {
   const [page, setPage] = React.useState({});
   const [partnersPosts, setPartnersPosts] = React.useState([]);
+  const [error, setError] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [pageCount, setPageCount] = React.useState(1);
   const { slug } = useParams();
   let navigate = useNavigate();
 
@@ -29,22 +33,56 @@ const PageCategory = () => {
       setPage(res.data);
     };
 
-    const fetchPostsData = async () => {
-      const data = await fetch(
-        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&populate=*`,
+    const initialFetchPosts = async () => {
+      const response = await fetch(
+        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },
       );
-      const res = await data.json();
-      setPartnersPosts(res.data);
+      const data = await response.json();
+
+      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
+      setCurrentPage((currentPage) => currentPage + 1);
+    };
+
+    const fetchPageCount = async () => {
+      const response = await fetch(
+        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=6`,
+        {
+          headers,
+        },
+      );
+      const data = await response.json();
+      setPageCount(data.meta.pagination.pageCount);
     };
 
     fetchData();
-    fetchPostsData();
+    initialFetchPosts();
+    fetchPageCount();
   }, [slug]);
 
-  page && console.log(page);
+  const handleClick = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        {
+          headers,
+        },
+      );
+      const data = await response.json();
+
+      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+      setCurrentPage((currentPage) => currentPage + 1);
+    }
+  };
 
   return (
     <div className="page animateLeft">
@@ -65,8 +103,23 @@ const PageCategory = () => {
               </div>
             ))}
           </div>
+          {isLoading && <p>Carregando...</p>}
+          {error && <p>Error: {error.message}</p>}
         </Container>
       )}
+
+      <Container fixed className="center-items">
+        {pageCount > 1 && currentPage <= pageCount && (
+          <Button
+            className="pagination-btn"
+            variant="contained"
+            color="inherit"
+            onClick={handleClick}
+          >
+            Ver mais
+          </Button>
+        )}
+      </Container>
 
       <Container fixed className="center-items">
         <Button
