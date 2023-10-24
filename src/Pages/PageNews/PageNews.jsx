@@ -16,51 +16,8 @@ const PageNews = ({ id, slug }) => {
   const [partnersPosts, setPartnersPosts] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(null);
-  const [p, setP] = React.useState(1);
+  const [currentPage, setCurrentPage] = React.useState(1);
   let navigate = useNavigate();
-  let wait = false;
-
-  const fetchDataInitial = async () => {
-    wait = true;
-    setIsLoading(true);
-    setError(null);
-    console.log(p);
-
-    try {
-      const response = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=${p}&pagination[pageSize]=3&populate=*`,
-        {
-          headers,
-        },
-      );
-      const data = await response.json();
-
-      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
-      setP(p + 1);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setTimeout(() => {
-        wait = false
-        setIsLoading(false)
-      }, 1000);
-    }
-    
-  };
-
-  const handleScroll = () => {
-    if (
-      window.scrollY + window.innerHeight - 200 < document.querySelector('.posts').offsetHeight + document.querySelector('.posts').offsetTop || isLoading
-      // window.innerHeight + document.documentElement.scrollTop !==
-      //   document.documentElement.offsetHeight ||
-      // isLoading
-    ) {
-      return;
-    } else if (!isLoading) {
-      fetchDataInitial();
-    }
-    
-  };
 
   React.useEffect(() => {
     // window.scrollTo(0, 0);
@@ -77,9 +34,22 @@ const PageNews = ({ id, slug }) => {
       setImage(res.data.attributes.innerImage.data);
     };
 
+    const initialFetchPosts = async () => {
+      const response = await fetch(
+        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        {
+          headers,
+        },
+      );
+      const data = await response.json();
+
+      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
+      setCurrentPage((currentPage) => currentPage + 1);
+    };
+
     const fetchPageCount = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=3&populate=*`,
+        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },
@@ -87,28 +57,36 @@ const PageNews = ({ id, slug }) => {
       const res = await data.json();
       setPageCount(res.meta.pagination.pageCount);
     };
+
     fetchData();
+    initialFetchPosts();
     fetchPageCount();
-    // fetchDataInitial();
-
-    // const fetchPostsData = async () => {
-    //   const data = await fetch(
-    //     `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6&populate=*`,
-    //     {
-    //       headers,
-    //     },
-    //   );
-    //   const res = await data.json();
-    //   setPartnersPosts(res.data);
-    // };
-
-    // fetchPostsData();
   }, []);
 
-  React.useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [isLoading]);
+  const handleClick = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch(
+        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        {
+          headers,
+        },
+      );
+      const data = await response.json();
+
+      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
+    } catch (error) {
+      setError(error);
+    } finally {
+      setIsLoading(false);
+      setCurrentPage((currentPage) => currentPage + 1);
+    }
+  };
+
+  currentPage && console.log('Atual' + currentPage);
+  pageCount && console.log('Contador' + pageCount);
 
   return (
     <div className="page animateLeft">
@@ -136,8 +114,19 @@ const PageNews = ({ id, slug }) => {
             </div>
           ))}
         </div>
-        {isLoading && <p>Loading...</p>}
+        {isLoading && <p>Carregando...</p>}
         {error && <p>Error: {error.message}</p>}
+
+        {currentPage <= pageCount && (
+          <Button
+            className="back-btn"
+            variant="contained"
+            color="inherit"
+            onClick={handleClick}
+          >
+            Ver mais
+          </Button>
+        )}
       </Container>
 
       <Container fixed className="center-items">
