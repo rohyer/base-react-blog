@@ -49,7 +49,7 @@ const PageNews = ({ id, slug }) => {
 
     const fetchPageCount = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6&populate=*`,
+        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6`,
         {
           headers,
         },
