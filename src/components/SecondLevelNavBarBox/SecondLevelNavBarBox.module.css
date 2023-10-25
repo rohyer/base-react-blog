@@ -1,15 +1,36 @@
-:global(.second-level-navbar) {
-  display: flex;
-  opacity: 0;
-  position: absolute;
-  top: 84px;
-  left: 0;
-  min-width: 175px;
-  background-color: #FFFFFF;
-  box-shadow: 0 6px 12px #00000029;
-  transform: translateY(20px);
-  transition: all .25s;
-  visibility: hidden;
+@media (min-width: 992px) {
+  :global(.second-level-navbar) {
+    display: flex;
+    opacity: 0;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    min-width: 175px;
+    background-color: #FFFFFF;
+    box-shadow: 0 6px 12px #00000029;
+    transform: translateY(20px);
+    transition: all .25s;
+    visibility: hidden;
+  }
+  :global(.second-level-navbar) > ul {
+    padding: 15px;
+  }
+  :global(.second-level-navbar) > ul li a {
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 991px) {
+  :global(.second-level-navbar) {
+    display: flex;
+    transition: all .25s;
+  }
+  :global(.second-level-navbar) > ul {
+    padding: 5px;
+  }
+  :global(.second-level-navbar) > ul li a {
+    padding: 10px;
+  }
 }
 
 :global(.second-level-navbar)::before {
@@ -23,9 +44,6 @@
   transition: all .6s ease-in-out;
 }
 
-:global(.second-level-navbar) > ul {
-  padding: 15px;
-}
 :global(.second-level-navbar) > ul li {
   margin: 0;
 }
@@ -38,7 +56,6 @@
   font-style: normal;
   color: #333333;
   border-radius: 3px;
-  padding: 12px 15px;
   margin: 4px 0px;
   transition: all .25s;
 }
