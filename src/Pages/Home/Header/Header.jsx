@@ -7,10 +7,17 @@ import {
   Box,
   List,
   ListItem,
+  ListItemButton,
+  ListItemText,
   Drawer,
   Divider,
   IconButton,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
 } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom';
 import { Menu, Close } from '@mui/icons-material';
 import SecondLevelNavBarBox from '../../../Components/SecondLevelNavBarBox/SecondLevelNavBarBox';
@@ -61,28 +68,66 @@ const Header = () => {
       : styles.desktopNavbarLink;
 
     if (link) {
-      if (!attributes.secondLevel) {
-        return (
-          <Link
-            to={link}
-            target={target}
-            className={classNavbar + ' ' + styles.desktopNavbarLinkBorder}
-          >
-            {attributes.title}
-          </Link>
-        );
-      } else {
-        return (
-          <>
-            <Link to={link} target={target} className={classNavbar}>
+      if (!responsive) {
+        if (!attributes.secondLevel) {
+          return (
+            <Link
+              to={link}
+              target={target}
+              className={classNavbar + ' ' + styles.desktopNavbarLinkBorder}
+            >
               {attributes.title}
             </Link>
-            <SecondLevelNavBarBox
-              slug={attributes.paginas.data[0].attributes.slug}
-              pages={attributes.paginas.data}
-            />
-          </>
-        );
+          );
+        } else {
+          return (
+            <>
+              <Link to={link} target={target} className={classNavbar}>
+                {attributes.title}
+              </Link>
+              <SecondLevelNavBarBox
+                slug={attributes.paginas.data[0].attributes.slug}
+                pages={attributes.paginas.data}
+              />
+            </>
+          );
+        }
+      } else {
+        if (!attributes.secondLevel) {
+          return (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <Link
+                  to={link}
+                  target={target}
+                  className={classNavbar + ' ' + styles.desktopNavbarLinkBorder}
+                >
+                  {attributes.title}
+                </Link>
+              </ListItemButton>
+            </ListItem>
+          );
+        } else {
+          return (
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>{attributes.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  <SecondLevelNavBarBox
+                    slug={attributes.paginas.data[0].attributes.slug}
+                    pages={attributes.paginas.data}
+                  />
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          );
+        }
       }
     }
   };
@@ -141,12 +186,7 @@ const Header = () => {
           onClick={toggleDrawer('right', false)}
         />
 
-        <Box
-          sx={{ width: 250 }}
-          role="presentation"
-          onClick={toggleDrawer('right', false)}
-          onKeyDown={toggleDrawer('right', false)}
-        >
+        <Box sx={{ width: 250 }} role="presentation">
           <List className={styles.listResponsiveNavbar}>
             {pages.map(({ attributes, id }) => (
               <ListItem key={id} disablePadding>
