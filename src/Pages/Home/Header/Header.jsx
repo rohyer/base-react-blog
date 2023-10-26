@@ -124,6 +124,7 @@ const Header = () => {
                     slug={attributes.paginas.data[0].attributes.slug}
                     pages={attributes.paginas.data}
                     handleClick={toggleDrawer('right', false)}
+                    showAll={true}
                   />
                 </Typography>
               </AccordionDetails>
