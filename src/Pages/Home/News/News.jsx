@@ -25,7 +25,8 @@ const News = () => {
     };
     const fetchPostsData = async () => {
       const response = await fetch(
-        import.meta.env.VITE_APP_API_URL + '/api/noticias?populate=*',
+        import.meta.env.VITE_APP_API_URL +
+          '/api/noticias?pagination[page]=1&pagination[pageSize]=6&populate=*',
         {
           headers,
         },
