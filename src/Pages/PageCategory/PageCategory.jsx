@@ -21,6 +21,7 @@ const PageCategory = () => {
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
+    setCurrentPage(1);
 
     const fetchData = async () => {
       const data = await fetch(
@@ -35,15 +36,14 @@ const PageCategory = () => {
 
     const initialFetchPosts = async () => {
       const response = await fetch(
-        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },
       );
       const data = await response.json();
 
-      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
-      setCurrentPage((currentPage) => currentPage + 1);
+      setPartnersPosts(data.data);
     };
 
     const fetchPageCount = async () => {
@@ -68,7 +68,7 @@ const PageCategory = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage + 1}&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },
