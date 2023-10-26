@@ -33,7 +33,7 @@ const Services = () => {
 
     const fetchPostsData = async () => {
       const data = await fetch(
-        'http://localhost:1337/api/servicos?populate=*',
+        'http://localhost:1337/api/servicos?pagination[page]=1&pagination[pageSize]=8&populate=*',
         {
           headers,
         },
