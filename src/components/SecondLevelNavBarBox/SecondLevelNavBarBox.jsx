@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom';
 import SecondLevelNavBarPages from '../SecondLevelNavBarPages/SecondLevelNavBarPages';
 import SecondLevelNavBarCategories from '../SecondLevelNavBarCategories/SecondLevelNavBarCategories';
 
-const SecondLevelNavBarBox = ({ slug, pages }) => {
+const SecondLevelNavBarBox = ({ slug, pages, handleClick }) => {
   return (
     <div className="second-level-navbar">
       {slug === 'noticias' ? (
-        <SecondLevelNavBarCategories />
+        <SecondLevelNavBarCategories handleClick={handleClick} />
       ) : (
-        <SecondLevelNavBarPages pages={pages} />
+        <SecondLevelNavBarPages pages={pages} handleClick={handleClick} />
       )}
     </div>
   );

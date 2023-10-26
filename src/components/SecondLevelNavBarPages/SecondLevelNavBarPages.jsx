@@ -6,13 +6,13 @@ const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
 };
 
-const SecondLevelNavBarPages = ({ pages }) => {
+const SecondLevelNavBarPages = ({ pages, handleClick }) => {
   return (
     <ul>
       {pages &&
         pages.map((page) => (
           <li key={page.id}>
-            <Link>{page.attributes.homeTitle}</Link>
+            <Link onClick={handleClick}>{page.attributes.homeTitle}</Link>
           </li>
         ))}
     </ul>

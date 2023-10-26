@@ -101,6 +101,7 @@ const Header = () => {
                   to={link}
                   target={target}
                   className={classNavbar + ' ' + styles.desktopNavbarLinkBorder}
+                  onClick={toggleDrawer('right', false)}
                 >
                   {attributes.title}
                 </Link>
@@ -122,6 +123,7 @@ const Header = () => {
                   <SecondLevelNavBarBox
                     slug={attributes.paginas.data[0].attributes.slug}
                     pages={attributes.paginas.data}
+                    handleClick={toggleDrawer('right', false)}
                   />
                 </Typography>
               </AccordionDetails>

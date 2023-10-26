@@ -7,7 +7,7 @@ const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
 };
 
-const SecondLevelNavBarCategories = () => {
+const SecondLevelNavBarCategories = ({ handleClick }) => {
   const [categories, setCategories] = React.useState([]);
 
   React.useEffect(() => {
@@ -32,6 +32,7 @@ const SecondLevelNavBarCategories = () => {
                 to={`${import.meta.env.VITE_APP_ORIGIN_URL}/categoria/${
                   category.attributes.slug
                 }`}
+                onClick={handleClick}
               >
                 {category.attributes.title}
               </Link>
