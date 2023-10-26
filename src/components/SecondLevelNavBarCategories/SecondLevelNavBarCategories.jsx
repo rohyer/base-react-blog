@@ -38,6 +38,15 @@ const SecondLevelNavBarCategories = ({ handleClick }) => {
               </Link>
             </li>
           ))}
+
+        <li key="0">
+          <Link
+            to={`${import.meta.env.VITE_APP_ORIGIN_URL}/noticias`}
+            onClick={handleClick}
+          >
+            Ver todos
+          </Link>
+        </li>
       </ul>
     </>
   );
