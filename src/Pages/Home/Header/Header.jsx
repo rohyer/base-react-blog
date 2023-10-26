@@ -132,19 +132,6 @@ const Header = () => {
     }
   };
 
-  const handleScroll = () => {
-    const header = document.querySelector('header');
-    const scrollPosition = window.scrollY;
-
-    if (scrollPosition >= 100) {
-      header.classList.add(styles.scrolled);
-    } else {
-      header.classList.remove(styles.scrolled);
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll);
-
   return (
     <header>
       <Container fixed>

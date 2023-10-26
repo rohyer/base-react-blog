@@ -6,12 +6,6 @@ header {
   background-color: #FFFFFF;
   box-shadow: 0 6px 12px #00000029;
   z-index: 99;
-  opacity: 0.8;
-  transition: opacity .25s;
-}
-
-header.scrolled {
-  opacity: 1;
 }
 
 .items {
