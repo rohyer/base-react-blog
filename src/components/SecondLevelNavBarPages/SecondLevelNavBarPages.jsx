@@ -12,7 +12,14 @@ const SecondLevelNavBarPages = ({ pages, handleClick }) => {
       {pages &&
         pages.map((page) => (
           <li key={page.id}>
-            <Link onClick={handleClick}>{page.attributes.homeTitle}</Link>
+            <Link
+              to={`${import.meta.env.VITE_APP_ORIGIN_URL}/${
+                page.attributes.slug
+              }`}
+              onClick={handleClick}
+            >
+              {page.attributes.homeTitle}
+            </Link>
           </li>
         ))}
     </ul>
