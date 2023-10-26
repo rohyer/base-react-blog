@@ -55,6 +55,7 @@ const PageCategory = () => {
       );
       const data = await response.json();
       setPageCount(data.meta.pagination.pageCount);
+      setCurrentPage((currentPage) => currentPage + 1);
     };
 
     fetchData();
@@ -68,7 +69,7 @@ const PageCategory = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage + 1}&pagination[pageSize]=6&populate=*`,
+        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },
