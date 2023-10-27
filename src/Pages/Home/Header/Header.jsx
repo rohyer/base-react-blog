@@ -1,5 +1,7 @@
 import styles from './Header.module.css';
 import logo from '../../../assets/react.svg';
+import flagPtBR from '../../../assets/flags/br.png';
+import flagEn from '../../../assets/flags/uk.png';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import {
@@ -141,7 +143,7 @@ const Header = () => {
         <div className={styles.items}>
           <div className={styles.logo}>
             <Link to={window.location.origin}>
-              <img src={logo} alt="" />
+              <img src={logo} alt="Logo" />
             </Link>
           </div>
 
@@ -152,6 +154,16 @@ const Header = () => {
               </li>
             ))}
           </ul>
+
+          <div className="header__flag">
+            <a href="javascript:trocarIdioma('pt')">
+              <img src={flagPtBR} alt="pt-BR" />
+            </a>
+            <a href="javascript:trocarIdioma('en')">
+              <img src={flagEn} alt="en" />
+            </a>
+          </div>
+
 
           <IconButton
             size="large"

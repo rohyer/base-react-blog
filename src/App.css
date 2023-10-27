@@ -143,3 +143,19 @@ body.overflow-hidden {
   font-style: normal;
   color: #333333;
 }
+
+.skiptranslate {
+  display: none;
+}
+#google_translate_element {
+  display: none;
+}
+.goog-te-banner-frame {
+  display: none !important;
+}
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+  display: none;
+}
+body {
+  top: 0 !important;
+}
