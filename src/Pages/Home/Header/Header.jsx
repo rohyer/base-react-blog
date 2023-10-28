@@ -153,17 +153,16 @@ const Header = () => {
                 {getLinkNavbar(attributes, false)}
               </li>
             ))}
+
+            <div className={styles.flags}>
+              <a href="javascript:trocarIdioma('pt')">
+                <img src={flagPtBR} alt="pt-BR" />
+              </a>
+              <a href="javascript:trocarIdioma('en')">
+                <img src={flagEn} alt="en" />
+              </a>
+            </div>
           </ul>
-
-          <div className="header__flag">
-            <a href="javascript:trocarIdioma('pt')">
-              <img src={flagPtBR} alt="pt-BR" />
-            </a>
-            <a href="javascript:trocarIdioma('en')">
-              <img src={flagEn} alt="en" />
-            </a>
-          </div>
-
 
           <IconButton
             size="large"

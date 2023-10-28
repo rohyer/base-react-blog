@@ -29,6 +29,12 @@ header {
   margin-left: 15px;
 }
 
+.flags a img {
+  width: 25px;
+  height: auto;
+  margin-left: 15px;
+}
+
 @media (min-width: 992px) {
   header {
     height: 100px;
