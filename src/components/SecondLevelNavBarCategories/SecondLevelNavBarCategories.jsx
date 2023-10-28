@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './SecondLevelNavBarCategories.module.css';
 import { Link } from 'react-router-dom';
-import Card2 from '../Card2/Card2';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
