@@ -20,20 +20,24 @@ const headers = {
 const Services = () => {
   const [services, setServices] = React.useState({});
   const [servicesPosts, setServicesPosts] = React.useState([]);
-  const [swiper, setSwiper] = React.useState(null);
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('http://localhost:1337/api/paginas/4', {
-        headers,
-      });
+      const data = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/paginas/4`,
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setServices(res.data.attributes);
     };
 
     const fetchPostsData = async () => {
       const data = await fetch(
-        'http://localhost:1337/api/servicos?pagination[page]=1&pagination[pageSize]=8&populate=*',
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/servicos?pagination[page]=1&pagination[pageSize]=8&populate=*`,
         {
           headers,
         },
@@ -76,8 +80,6 @@ const Services = () => {
             navigation
             autoplay
             spaceBetween={30}
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
             breakpoints={{
               0: {
                 slidesPerView: 1,

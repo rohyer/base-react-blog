@@ -14,7 +14,7 @@ const AltAbout = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
-        'http://localhost:1337/api/paginas/1?populate=*',
+        `${import.meta.env.VITE_APP_API_URL}/api/paginas/1?populate=*`,
         {
           headers,
         },

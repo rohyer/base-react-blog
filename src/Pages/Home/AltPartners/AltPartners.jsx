@@ -14,16 +14,19 @@ const Partners = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('http://localhost:1337/api/paginas/5', {
-        headers,
-      });
+      const data = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/paginas/5`,
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setPartners(res.data.attributes);
     };
 
     const fetchPostsData = async () => {
       const data = await fetch(
-        'http://localhost:1337/api/parceiros?populate=*',
+        `${import.meta.env.VITE_APP_API_URL}/api/parceiros?populate=*`,
         {
           headers,
         },
