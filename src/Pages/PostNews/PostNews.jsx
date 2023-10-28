@@ -20,7 +20,9 @@ const PostNews = ({ collectionType }) => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/${collectionType}?filters[slug][$eq]=${slug}&populate=*`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/${collectionType}?filters[slug][$eq]=${slug}&populate=*`,
         {
           headers,
         },

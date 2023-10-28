@@ -20,7 +20,9 @@ const PagePartners = ({ slug }) => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/5?populate[0]=innerImage`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/paginas/5?populate[0]=innerImage`,
         {
           headers,
         },
@@ -32,7 +34,7 @@ const PagePartners = ({ slug }) => {
 
     const fetchPostsData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/parceiros?populate=*`,
+        `${import.meta.env.VITE_APP_API_URL}/api/parceiros?populate=*`,
         {
           headers,
         },

@@ -24,7 +24,9 @@ const PageCategory = () => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/categorias?filters[slug][$eq]=${slug}&populate=*`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/categorias?filters[slug][$eq]=${slug}&populate=*`,
         {
           headers,
         },
@@ -35,7 +37,9 @@ const PageCategory = () => {
 
     const initialFetchPosts = async () => {
       const response = await fetch(
-        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=6&populate=*`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },
@@ -47,7 +51,9 @@ const PageCategory = () => {
 
     const fetchPageCount = async () => {
       const response = await fetch(
-        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=6`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=1&pagination[pageSize]=6`,
         {
           headers,
         },
@@ -68,7 +74,9 @@ const PageCategory = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:1337/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/noticias?filters[categoria][slug][$eq]=${slug}&pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },

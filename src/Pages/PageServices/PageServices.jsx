@@ -24,7 +24,9 @@ const PageServices = () => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/4?populate[0]=innerImage`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/paginas/4?populate[0]=innerImage`,
         {
           headers,
         },
@@ -36,7 +38,9 @@ const PageServices = () => {
 
     const initialFetchPosts = async () => {
       const response = await fetch(
-        `http://localhost:1337/api/servicos?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/servicos?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
         {
           headers,
         },
@@ -49,7 +53,9 @@ const PageServices = () => {
 
     const fetchPageCount = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/servicos?pagination[page]=1&pagination[pageSize]=6`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/servicos?pagination[page]=1&pagination[pageSize]=6`,
         {
           headers,
         },
@@ -69,7 +75,9 @@ const PageServices = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:1337/api/servicos?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/servicos?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
         {
           headers,
         },
