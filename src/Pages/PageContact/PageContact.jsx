@@ -22,7 +22,7 @@ const PageContact = ({ id }) => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/${id}?populate=*`,
+        `http://localhost:1337/api/paginas/6?populate=*`,
         {
           headers,
         },

@@ -9,7 +9,7 @@ const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
 };
 
-const PagePartners = ({ id, slug }) => {
+const PagePartners = ({ slug }) => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
   const [partnersPosts, setPartnersPosts] = React.useState([]);
@@ -20,7 +20,7 @@ const PagePartners = ({ id, slug }) => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/${id}?populate[0]=innerImage`,
+        `http://localhost:1337/api/paginas/5?populate[0]=innerImage`,
         {
           headers,
         },
@@ -31,9 +31,12 @@ const PagePartners = ({ id, slug }) => {
     };
 
     const fetchPostsData = async () => {
-      const data = await fetch(`http://localhost:1337/api/${slug}?populate=*`, {
-        headers,
-      });
+      const data = await fetch(
+        `http://localhost:1337/api/parceiros?populate=*`,
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setPartnersPosts(res.data);
     };

@@ -39,17 +39,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home loading={loading} />} />
         <Route path="quem-somos" element={<Page id={1} />} />
-        <Route path="noticias" element={<PageNews id={2} slug="noticias" />} />
-        <Route path="cta" element={<Page id={3} />} posts={false} />
-        <Route
-          path="servicos"
-          element={<PageServices id={4} slug="servicos" />}
-        />
-        <Route
-          path="parceiros"
-          element={<PagePartners id={5} slug="parceiros" />}
-        />
-        <Route path="contato" element={<PageContact id={6} slug="contato" />} />
+        <Route path="noticias" element={<PageNews />} />
+        <Route path="cta" element={<Page id={3} />} />
+        <Route path="servicos" element={<PageServices />} />
+        <Route path="parceiros" element={<PagePartners />} />
+        <Route path="contato" element={<PageContact />} />
         <Route path="categoria/:slug" element={<PageCategory />} />
         <Route
           path="noticias/:slug"

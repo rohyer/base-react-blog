@@ -9,7 +9,7 @@ const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
 };
 
-const PageNews = ({ id, slug }) => {
+const PageNews = () => {
   const [pageCount, setPageCount] = React.useState(null);
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
@@ -24,7 +24,7 @@ const PageNews = ({ id, slug }) => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/${id}?populate[0]=innerImage`,
+        `http://localhost:1337/api/paginas/2?populate[0]=innerImage`,
         {
           headers,
         },
@@ -36,7 +36,7 @@ const PageNews = ({ id, slug }) => {
 
     const initialFetchPosts = async () => {
       const response = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        `http://localhost:1337/api/noticias?pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },
@@ -49,7 +49,7 @@ const PageNews = ({ id, slug }) => {
 
     const fetchPageCount = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6`,
+        `http://localhost:1337/api/noticias?pagination[page]=1&pagination[pageSize]=6`,
         {
           headers,
         },
@@ -69,7 +69,7 @@ const PageNews = ({ id, slug }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
+        `http://localhost:1337/api/noticias?pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
         {
           headers,
         },

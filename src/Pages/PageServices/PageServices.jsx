@@ -9,7 +9,7 @@ const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
 };
 
-const PageServices = ({ id, slug, posts }) => {
+const PageServices = () => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
   const [partnersPosts, setPartnersPosts] = React.useState([]);
@@ -24,7 +24,7 @@ const PageServices = ({ id, slug, posts }) => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/${id}?populate[0]=innerImage`,
+        `http://localhost:1337/api/paginas/4?populate[0]=innerImage`,
         {
           headers,
         },
@@ -36,7 +36,7 @@ const PageServices = ({ id, slug, posts }) => {
 
     const initialFetchPosts = async () => {
       const response = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
+        `http://localhost:1337/api/servicos?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
         {
           headers,
         },
@@ -49,7 +49,7 @@ const PageServices = ({ id, slug, posts }) => {
 
     const fetchPageCount = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=1&pagination[pageSize]=6`,
+        `http://localhost:1337/api/servicos?pagination[page]=1&pagination[pageSize]=6`,
         {
           headers,
         },
@@ -69,7 +69,7 @@ const PageServices = ({ id, slug, posts }) => {
 
     try {
       const response = await fetch(
-        `http://localhost:1337/api/${slug}?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
+        `http://localhost:1337/api/servicos?pagination[page]=${currentPage}&pagination[pageSize]=8&populate=*`,
         {
           headers,
         },
