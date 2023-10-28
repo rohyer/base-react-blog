@@ -1,7 +1,7 @@
 import './Page.css';
 import React from 'react';
 import { Container, Button } from '@mui/material';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 const headers = {
@@ -11,7 +11,6 @@ const headers = {
 const Page = ({ id }) => {
   const [page, setPage] = React.useState({});
   const [image, setImage] = React.useState();
-  const [partnersPosts, setPartnersPosts] = React.useState([]);
   let navigate = useNavigate();
 
   React.useEffect(() => {
@@ -19,7 +18,9 @@ const Page = ({ id }) => {
 
     const fetchData = async () => {
       const data = await fetch(
-        `http://localhost:1337/api/paginas/${id}?populate[0]=innerImage`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/paginas/${id}?populate[0]=innerImage`,
         {
           headers,
         },
@@ -29,16 +30,7 @@ const Page = ({ id }) => {
       setImage(res.data.attributes.innerImage.data);
     };
 
-    const fetchPostsData = async () => {
-      const data = await fetch(`http://localhost:1337/api/${slug}?populate=*`, {
-        headers,
-      });
-      const res = await data.json();
-      setPartnersPosts(res.data);
-    };
-
     fetchData();
-    fetchPostsData();
   }, [id]);
 
   return (
@@ -59,7 +51,7 @@ const Page = ({ id }) => {
         </div>
       </Container>
 
-      <Container className='center-items' fixed>
+      <Container className="center-items" fixed>
         <Button
           className="back-btn"
           variant="contained"
