@@ -1,7 +1,7 @@
 import './PageCategory.css';
 import Card2 from '../../Components/Card2/Card2';
 import React from 'react';
-import { Container, Button } from '@mui/material';
+import { Container, Button, Box, CircularProgress } from '@mui/material';
 import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
@@ -104,7 +104,11 @@ const PageCategory = () => {
               </div>
             ))}
           </div>
-          {isLoading && <p>Carregando...</p>}
+          {isLoading && (
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <CircularProgress />
+            </Box>
+          )}
           {error && <p>Error: {error.message}</p>}
         </Container>
       )}

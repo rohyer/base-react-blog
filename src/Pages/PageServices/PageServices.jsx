@@ -1,7 +1,7 @@
 import './PageServices.css';
 import Card1 from '../../Components/Card1/Card1';
 import React from 'react';
-import { Container, Button } from '@mui/material';
+import { Container, Button, Box, CircularProgress } from '@mui/material';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
@@ -112,7 +112,11 @@ const PageServices = ({ id, slug, posts }) => {
           ))}
         </div>
 
-        {isLoading && <p>Carregando...</p>}
+        {isLoading && (
+          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+            <CircularProgress />
+          </Box>
+        )}
         {error && <p>Error: {error.message}</p>}
       </Container>
 
