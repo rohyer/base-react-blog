@@ -1,18 +1,10 @@
 import './PostNews.css';
 import React from 'react';
 import { Container, Button } from '@mui/material';
-// import { useNavigate, useLoaderData } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, FreeMode, Autoplay } from 'swiper/modules';
 import { useNavigate, useParams } from 'react-router-dom';
 import PhotoSwipeLightbox from 'photoswipe/lightbox';
 import 'photoswipe/style.css';
-
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/free-mode';
-import 'swiper/css/navigation';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -85,7 +77,7 @@ const PostNews = ({ collectionType }) => {
 
       {imagesGallery && (
         <Container fixed>
-          <h2>Galeria</h2>
+          <h2 className="inner-title">Galeria</h2>
           <div className="pswp-gallery" id="my-test-gallery">
             {imagesGallery.map((image, index) => (
               <a
