@@ -38,13 +38,15 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home loading={loading} />} />
+
         <Route path="quem-somos" element={<Page id={1} />} />
-        <Route path="noticias" element={<PageNews />} />
         <Route path="cta" element={<Page id={3} />} />
+        <Route path="noticias" element={<PageNews />} />
         <Route path="servicos" element={<PageServices />} />
         <Route path="parceiros" element={<PagePartners />} />
         <Route path="contato" element={<PageContact />} />
         <Route path="categoria/:slug" element={<PageCategory />} />
+
         <Route
           path="noticias/:slug"
           element={<PostNews collectionType="noticias" />}
