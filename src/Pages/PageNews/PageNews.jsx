@@ -2,7 +2,7 @@ import './PageNews.css';
 import Card2 from '../../Components/Card2/Card2';
 import React from 'react';
 import { Container, Button, Box, CircularProgress } from '@mui/material';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 const headers = {
