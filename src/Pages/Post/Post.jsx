@@ -1,7 +1,6 @@
 import './Post.css';
 import React from 'react';
 import { Container, Button } from '@mui/material';
-// import { useNavigate, useLoaderData } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useNavigate, useParams } from 'react-router-dom';
 
