@@ -2,7 +2,7 @@ import './PagePartners.css';
 import Card3 from '../../Components/Card3/Card3';
 import React from 'react';
 import { Container, Button } from '@mui/material';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 
 const headers = {
