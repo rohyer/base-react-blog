@@ -2,8 +2,7 @@ import './PageCategory.css';
 import Card2 from '../../Components/Card2/Card2';
 import React from 'react';
 import { Container, Button, Box, CircularProgress } from '@mui/material';
-import { Link, Outlet, useNavigate, useParams } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
