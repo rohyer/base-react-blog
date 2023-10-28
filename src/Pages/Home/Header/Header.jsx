@@ -147,12 +147,14 @@ const Header = () => {
             </Link>
           </div>
 
-          <ul>
-            {pages.map(({ attributes, id }) => (
-              <li className="nav-item" key={id}>
-                {getLinkNavbar(attributes, false)}
-              </li>
-            ))}
+          <nav>
+            <ul>
+              {pages.map(({ attributes, id }) => (
+                <li className="nav-item" key={id}>
+                  {getLinkNavbar(attributes, false)}
+                </li>
+              ))}
+            </ul>
 
             <div className={styles.flags}>
               <a href="javascript:trocarIdioma('pt')">
@@ -162,18 +164,18 @@ const Header = () => {
                 <img src={flagEn} alt="en" />
               </a>
             </div>
-          </ul>
 
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            className={styles.buttonResponsiveNavbar}
-            onClick={toggleDrawer('right', true)}
-          >
-            <Menu />
-          </IconButton>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              className={styles.buttonResponsiveNavbar}
+              onClick={toggleDrawer('right', true)}
+            >
+              <Menu />
+            </IconButton>
+          </nav>
         </div>
       </Container>
 
