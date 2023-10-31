@@ -21,7 +21,14 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom';
-import { Menu, Close } from '@mui/icons-material';
+import {
+  Menu,
+  Close,
+  Facebook,
+  Instagram,
+  YouTube,
+  LinkedIn,
+} from '@mui/icons-material';
 import SecondLevelNavBarBox from '../../../Components/SecondLevelNavBarBox/SecondLevelNavBarBox';
 
 const headers = {
@@ -35,6 +42,7 @@ const headers = {
 
 const Header = () => {
   const [pages, setPages] = useState([]);
+  const [info, setInfo] = useState();
   const [state, setState] = useState({
     right: false,
   });
@@ -48,8 +56,19 @@ const Header = () => {
       setPages(res.data);
     };
 
+    const fetchInfoData = async () => {
+      const response = await fetch('http://localhost:1337/api/informacao', {
+        headers,
+      });
+      const json = await response.json();
+      setInfo(json.data.attributes);
+    };
+
     fetchData();
+    fetchInfoData();
   }, []);
+
+  console.log(info);
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -139,6 +158,45 @@ const Header = () => {
 
   return (
     <header>
+      <div className={styles.topItems}>
+        <Container fixed>
+          <div className={styles.contact}>
+            {info && (
+              <>
+                <a
+                  href={info.facebookLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Facebook />
+                </a>
+                <a
+                  href={info.instagramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Instagram />
+                </a>
+                <a
+                  href={info.youtubeLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <YouTube />
+                </a>
+                <a
+                  href={info.linkedinLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LinkedIn />
+                </a>
+              </>
+            )}
+            <i className="fa-solid fa-magnifying-glass"></i>
+          </div>
+        </Container>
+      </div>
       <Container fixed>
         <div className={styles.items}>
           <div className={styles.logo}>
