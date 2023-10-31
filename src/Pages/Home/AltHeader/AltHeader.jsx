@@ -1,5 +1,7 @@
 import styles from './AltHeader.module.css';
 import logo from '../../../assets/react.svg';
+import flagPtBR from '../../../assets/flags/br.png';
+import flagEn from '../../../assets/flags/uk.png';
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import {
@@ -7,12 +9,20 @@ import {
   Box,
   List,
   ListItem,
+  ListItemButton,
+  ListItemText,
   Drawer,
   Divider,
   IconButton,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
 } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Link } from 'react-router-dom';
 import { Menu, Close } from '@mui/icons-material';
+import SecondLevelNavBarBox from '../../../Components/SecondLevelNavBarBox/SecondLevelNavBarBox';
 
 const headers = {
   Authorization: 'Bearer ' + import.meta.env.VITE_APP_API_TOKEN,
@@ -21,8 +31,9 @@ const headers = {
 //   identifier: 'guilhermerl.dev@gmail.com',
 //   password: 'Vg7gzkXf6y!kqDb'
 // };
+// http://localhost:1337/api/menus?fields[0]=menuTitle&fields[1]=slug&fields[2]=homeButtonLink&fields[3]=homeTab
 
-const AltHeader = () => {
+const Header = () => {
   const [pages, setPages] = useState([]);
   const [state, setState] = useState({
     right: false,
@@ -30,12 +41,9 @@ const AltHeader = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch(
-        'http://localhost:1337/api/paginas?fields[0]=menuTitle&fields[1]=slug&fields[2]=homeButtonLink&fields[3]=homeTab',
-        {
-          headers,
-        },
-      );
+      const data = await fetch('http://localhost:1337/api/menus?populate=*', {
+        headers,
+      });
       const res = await data.json();
       setPages(res.data);
     };
@@ -55,40 +63,79 @@ const AltHeader = () => {
   };
 
   const getLinkNavbar = (attributes, responsive) => {
-    const link = attributes.homeButtonLink;
+    const link = attributes.link;
+    const target = attributes.tab ? '_blank' : '_self';
     const classNavbar = responsive
       ? styles.responsiveNavbarLink
       : styles.desktopNavbarLink;
 
     if (link) {
-      const target = attributes.homeTab ? '_blank' : '_self';
-
-      return (
-        <Link to={link} target={target} className={classNavbar}>
-          {attributes.menuTitle}
-        </Link>
-      );
-    } else {
-      return (
-        <a to={attributes.slug} target="_self" className={classNavbar}>
-          {attributes.menuTitle}
-        </a>
-      );
+      if (!responsive) {
+        if (!attributes.secondLevel) {
+          return (
+            <Link
+              to={link}
+              target={target}
+              className={classNavbar + ' ' + styles.desktopNavbarLinkBorder}
+            >
+              {attributes.title}
+            </Link>
+          );
+        } else {
+          return (
+            <>
+              <Link to={link} target={target} className={classNavbar}>
+                {attributes.title}
+              </Link>
+              <SecondLevelNavBarBox
+                slug={attributes.paginas.data[0].attributes.slug}
+                pages={attributes.paginas.data}
+              />
+            </>
+          );
+        }
+      } else {
+        if (!attributes.secondLevel) {
+          return (
+            <ListItem disablePadding>
+              <ListItemButton>
+                <Link
+                  to={link}
+                  target={target}
+                  className={classNavbar + ' ' + styles.desktopNavbarLinkBorder}
+                  onClick={toggleDrawer('right', false)}
+                >
+                  {attributes.title}
+                </Link>
+              </ListItemButton>
+            </ListItem>
+          );
+        } else {
+          return (
+            <Accordion>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel1a-content"
+                id="panel1a-header"
+              >
+                <Typography>{attributes.title}</Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Typography>
+                  <SecondLevelNavBarBox
+                    slug={attributes.paginas.data[0].attributes.slug}
+                    pages={attributes.paginas.data}
+                    handleClick={toggleDrawer('right', false)}
+                    showAll={true}
+                  />
+                </Typography>
+              </AccordionDetails>
+            </Accordion>
+          );
+        }
+      }
     }
   };
-
-  const handleScroll = () => {
-    const header = document.querySelector('header');
-    const scrollPosition = window.scrollY;
-
-    if (scrollPosition >= 100) {
-      header.classList.add(styles.scrolled);
-    } else {
-      header.classList.remove(styles.scrolled);
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll);
 
   return (
     <header>
@@ -96,26 +143,39 @@ const AltHeader = () => {
         <div className={styles.items}>
           <div className={styles.logo}>
             <Link to={window.location.origin}>
-              <img src={logo} alt="" />
+              <img src={logo} alt="Logo" />
             </Link>
           </div>
 
-          <ul>
-            {pages.map(({ attributes, id }) => (
-              <li key={id}>{getLinkNavbar(attributes, false)}</li>
-            ))}
-          </ul>
+          <nav>
+            <ul>
+              {pages.map(({ attributes, id }) => (
+                <li className="nav-item" key={id}>
+                  {getLinkNavbar(attributes, false)}
+                </li>
+              ))}
+            </ul>
 
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            className={styles.buttonResponsiveNavbar}
-            onClick={toggleDrawer('right', true)}
-          >
-            <Menu />
-          </IconButton>
+            <div className={styles.flags}>
+              <a href="javascript:trocarIdioma('pt')">
+                <img src={flagPtBR} alt="pt-BR" />
+              </a>
+              <a href="javascript:trocarIdioma('en')">
+                <img src={flagEn} alt="en" />
+              </a>
+            </div>
+
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              className={styles.buttonResponsiveNavbar}
+              onClick={toggleDrawer('right', true)}
+            >
+              <Menu />
+            </IconButton>
+          </nav>
         </div>
       </Container>
 
@@ -129,12 +189,7 @@ const AltHeader = () => {
           onClick={toggleDrawer('right', false)}
         />
 
-        <Box
-          sx={{ width: 250 }}
-          role="presentation"
-          onClick={toggleDrawer('right', false)}
-          onKeyDown={toggleDrawer('right', false)}
-        >
+        <Box sx={{ width: 250 }} role="presentation">
           <List className={styles.listResponsiveNavbar}>
             {pages.map(({ attributes, id }) => (
               <ListItem key={id} disablePadding>
@@ -149,4 +204,4 @@ const AltHeader = () => {
   );
 };
 
-export default AltHeader;
+export default Header;
