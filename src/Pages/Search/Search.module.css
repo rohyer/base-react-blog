@@ -1,0 +1,39 @@
+.posts {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.form {
+  position: relative;
+}
+
+.form input {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #333;
+  text-indent: 15px;
+  height: 60px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0px 10px 30px -5px rgb(0 0 0 / 10%);
+  outline: none;
+}
+
+.form button {
+  cursor: pointer;
+  position: absolute;
+  right: -5px;
+  top: 0;
+  bottom: 0;
+  border: none;
+  background-color: transparent;
+  padding: 0px 30px;
+}
+
+.form button i {
+  font-size: 22px;
+  color: #333;
+}
