@@ -68,8 +68,6 @@ const Header = () => {
     fetchInfoData();
   }, []);
 
-  console.log(info);
-
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === 'keydown' &&
@@ -193,7 +191,9 @@ const Header = () => {
                 </a>
               </>
             )}
-            <i className="fa-solid fa-magnifying-glass"></i>
+            <Link to="pesquisa">
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </Link>
           </div>
         </Container>
       </div>
