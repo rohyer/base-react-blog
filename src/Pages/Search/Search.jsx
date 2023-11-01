@@ -18,7 +18,6 @@ const Search = () => {
 
   const handleSubmit = async ({ target }) => {
     event.preventDefault();
-    setCurrentPage(1);
     setIsLoading(true);
     setError(null);
 
@@ -35,54 +34,9 @@ const Search = () => {
           headers,
         },
       );
-      // const responsePosts = await fetch(
-      //   `${
-      //     import.meta.env.VITE_APP_API_URL
-      //   }/api/noticias?pagination[page]=${currentPage}&pagination[pageSize]=6&filters[innerContent][$contains]=${
-      //     target[0].value
-      //   }&populate=*`,
-      //   {
-      //     headers,
-      //   },
-      // );
       const jsonPosts = await responsePosts.json();
 
       setPartnersPosts(jsonPosts.data);
-    } catch (error) {
-      setError(error);
-    } finally {
-      setIsLoading(false);
-      setCurrentPage((currentPage) => currentPage + 1);
-    }
-
-    // const responsePageCount = await fetch(
-    //   `${
-    //     import.meta.env.VITE_APP_API_URL
-    //   }/api/noticias?pagination[page]=1&pagination[pageSize]=6&filters[innerContent][$contains]=${formContent}`,
-    //   {
-    //     headers,
-    //   },
-    // );
-    // const jsonPageCount = await responsePageCount.json();
-    // setPageCount(jsonPageCount.meta.pagination.pageCount);
-  };
-
-  const handleClick = async () => {
-    setIsLoading(true);
-    setError(null);
-
-    try {
-      const response = await fetch(
-        `${
-          import.meta.env.VITE_APP_API_URL
-        }/api/noticias?pagination[page]=${currentPage}&pagination[pageSize]=6&populate=*`,
-        {
-          headers,
-        },
-      );
-      const data = await response.json();
-
-      setPartnersPosts((prevPosts) => [...prevPosts, ...data.data]);
     } catch (error) {
       setError(error);
     } finally {
