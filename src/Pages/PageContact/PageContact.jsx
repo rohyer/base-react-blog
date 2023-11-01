@@ -1,4 +1,4 @@
-import './PageContact.css';
+import styles from './PageContact.module.css';
 import React from 'react';
 import { Container, Button, Grid, TextField } from '@mui/material';
 import ReactMarkdown from 'react-markdown';
