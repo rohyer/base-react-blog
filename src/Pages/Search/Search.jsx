@@ -16,6 +16,10 @@ const Search = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   let navigate = useNavigate();
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSubmit = async ({ target }) => {
     event.preventDefault();
     setIsLoading(true);
@@ -49,7 +53,11 @@ const Search = () => {
     <div className="page animateLeft">
       <Container fixed>
         <form action="" onSubmit={handleSubmit} className={styles.form}>
-          <input type="text" name="" id="" />
+          <input
+            type="text"
+            name="pesquisa"
+            placeholder="Digite aqui o que procura..."
+          />
 
           <button type="submit">
             <i className="fa-solid fa-magnifying-glass"></i>
