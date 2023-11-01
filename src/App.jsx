@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './Pages/Home/Header/Header';
+import AltHeader from './Pages/Home/AltHeader/AltHeader';
 import Footer from './Pages/Home/Footer/Footer';
 import Home from './Pages/Home/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -13,6 +13,7 @@ import PageServices from './Pages/PageServices/PageServices';
 import PagePartners from './Pages/PagePartners/PagePartners';
 import PostNews from './Pages/PostNews/PostNews';
 import PageCategory from './Pages/PageCategory/PageCategory';
+import Search from './Pages/Search/Search';
 
 function App() {
   const [loading, setLoading] = React.useState(true);
@@ -34,7 +35,7 @@ function App() {
   return (
     <BrowserRouter>
       <Loading loading={loading} />
-      <Header />
+      <AltHeader />
 
       <Routes>
         <Route path="/" element={<Home loading={loading} />} />
@@ -59,6 +60,7 @@ function App() {
           path="parceiros/:slug"
           element={<Post collectionType="parceiros" />}
         />
+        <Route path="pesquisa" element={<Search />} />
       </Routes>
 
       <Footer />
