@@ -59,9 +59,9 @@ const Search = () => {
             placeholder="Digite aqui o que procura..."
           />
 
-          <button type="submit">
-            <i className="fa-solid fa-magnifying-glass"></i>
-          </button>
+          <i className="fa-solid fa-magnifying-glass"></i>
+
+          <button type="submit">Pesquisar</button>
         </form>
       </Container>
 
