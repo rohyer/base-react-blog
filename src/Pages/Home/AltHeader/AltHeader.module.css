@@ -110,7 +110,7 @@ header {
 }
 @media (max-width: 991px) {
   header {
-    height: 60px;
+    height: 90px;
   }
 
   .logo, .logo a {
@@ -177,4 +177,12 @@ header {
 .responsiveMenuClose {
   padding: 5px 5px 5px 10px;
   margin-top: 10px;
+}
+
+.socialNetworksIcon {
+  color: #444;
+}
+
+.searchIcon {
+  margin-left: 20px;
 }
