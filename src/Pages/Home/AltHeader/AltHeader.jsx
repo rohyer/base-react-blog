@@ -166,32 +166,32 @@ const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Facebook />
+                  <Facebook className={styles.socialNetworksIcon} />
                 </a>
                 <a
                   href={info.instagramLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Instagram />
+                  <Instagram className={styles.socialNetworksIcon} />
                 </a>
                 <a
                   href={info.youtubeLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <YouTube />
+                  <YouTube className={styles.socialNetworksIcon} />
                 </a>
                 <a
                   href={info.linkedinLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <LinkedIn />
+                  <LinkedIn className={styles.socialNetworksIcon} />
                 </a>
               </>
             )}
-            <Link to="pesquisa">
+            <Link className={styles.searchIcon} to="pesquisa">
               <i className="fa-solid fa-magnifying-glass"></i>
             </Link>
           </div>
