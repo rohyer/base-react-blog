@@ -41,9 +41,12 @@ const Header = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('http://localhost:1337/api/menus?populate=*', {
-        headers,
-      });
+      const data = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/menus?populate=*`,
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setPages(res.data);
     };

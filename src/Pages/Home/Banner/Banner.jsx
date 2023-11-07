@@ -19,9 +19,12 @@ const Banner = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('http://localhost:1337/api/banners?populate=*', {
-        headers,
-      });
+      const data = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/banners?populate=*`,
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setBanners(res.data);
     };
