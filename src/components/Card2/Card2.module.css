@@ -93,3 +93,14 @@
   opacity: 1;
   transform: matrix(1, 0, 0, 1, 0, 0);
 }
+
+@media (min-width: 500px) {
+  :global(.posts) .post {
+    width: 350px;
+  }
+}
+@media (max-width: 499px) {
+  :global(.posts) .post {
+    width: 290px;
+  }
+}

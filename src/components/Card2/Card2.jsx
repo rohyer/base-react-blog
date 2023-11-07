@@ -34,19 +34,21 @@ const Card2 = ({ data, api }) => {
 
     if (content) {
       return (
-        <Link
-          key={data.id}
-          to={`${window.location.origin}/${api}/${data.attributes.slug}`}
-          className={styles.post}
-        >
-          {getPostCard(data)}
-        </Link>
+        <article>
+          <Link
+            key={data.id}
+            to={`${window.location.origin}/${api}/${data.attributes.slug}`}
+            className={styles.post}
+          >
+            {getPostCard(data)}
+          </Link>
+        </article>
       );
     } else {
       return (
-        <div key={data.id} className={styles.post}>
+        <article key={data.id} className={styles.post}>
           {getPostCard(data)}
-        </div>
+        </article>
       );
     }
   };
