@@ -22,16 +22,19 @@ const AltBanner = () => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const data = await fetch('http://localhost:1337/api/banners', {
-        headers,
-      });
+      const data = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/banners`,
+        {
+          headers,
+        },
+      );
       const res = await data.json();
       setBanners(res.data);
     };
 
     const fetchImage = async () => {
       const response = await fetch(
-        'http://localhost:1337/api/informacao?populate=*',
+        `${import.meta.env.VITE_APP_API_URL}/api/informacao?populate=*`,
         {
           headers,
         },
@@ -59,8 +62,14 @@ const AltBanner = () => {
               viewBox="0 0 180 60"
               className="border"
             >
-              <polyline points="179,1 179,59 1,59 1,1 179,1" className="bg-line" />
-              <polyline points="179,1 179,59 1,59 1,1 179,1" className="hl-line" />
+              <polyline
+                points="179,1 179,59 1,59 1,1 179,1"
+                className="bg-line"
+              />
+              <polyline
+                points="179,1 179,59 1,59 1,1 179,1"
+                className="hl-line"
+              />
             </svg>
             <span>{buttonText}</span>
           </a>
