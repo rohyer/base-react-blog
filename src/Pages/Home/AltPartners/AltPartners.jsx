@@ -26,7 +26,9 @@ const Partners = () => {
 
     const fetchPostsData = async () => {
       const data = await fetch(
-        `${import.meta.env.VITE_APP_API_URL}/api/parceiros?populate=*`,
+        `${
+          import.meta.env.VITE_APP_API_URL
+        }/api/parceiros?pagination[page]=1&pagination[pageSize]=8&populate=*`,
         {
           headers,
         },
