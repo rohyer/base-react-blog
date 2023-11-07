@@ -114,9 +114,7 @@ const PageNews = () => {
       <Container fixed>
         <div className="posts">
           {partnersPosts.map((data) => (
-            <div key={data.id}>
-              <Card2 data={data} api="noticias" />
-            </div>
+            <Card2 key={data.id} data={data} api="noticias" />
           ))}
         </div>
         {isLoading && (
