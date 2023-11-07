@@ -15,7 +15,7 @@ const Footer = () => {
   React.useEffect(() => {
     const fetchData = async () => {
       const data = await fetch(
-        'http://localhost:1337/api/informacao?populate=*',
+        `${import.meta.env.VITE_APP_API_URL}/api/informacao?populate=*`,
         {
           headers,
         },
