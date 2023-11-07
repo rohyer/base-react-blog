@@ -215,12 +215,12 @@ const Header = () => {
             </ul>
 
             <div className={styles.flags}>
-              <a href="javascript:trocarIdioma('pt')">
+              <div onClick={() => trocarIdioma('pt')}>
                 <img src={flagPtBR} alt="pt-BR" />
-              </a>
-              <a href="javascript:trocarIdioma('en')">
+              </div>
+              <div onClick={() => trocarIdioma('en')}>
                 <img src={flagEn} alt="en" />
-              </a>
+              </div>
             </div>
 
             <IconButton

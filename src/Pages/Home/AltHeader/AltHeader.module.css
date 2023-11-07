@@ -54,7 +54,12 @@ header {
   margin-left: 15px;
 }
 
-.flags a img {
+.flags {
+  display: flex;
+}
+
+.flags div img {
+  cursor: pointer;
   width: 25px;
   height: auto;
   margin-left: 15px;
