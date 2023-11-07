@@ -54,7 +54,7 @@ const News = () => {
 
   if (news) {
     return (
-      <div className={styles.news}>
+      <section className={styles.news}>
         <Container fixed>
           <div className={styles.topContent}>
             <h2 className="hidden-bottom-element">{news.homeTitle}</h2>
@@ -72,7 +72,7 @@ const News = () => {
             {getLink()}
           </div>
         </Container>
-      </div>
+      </section>
     );
   }
 };

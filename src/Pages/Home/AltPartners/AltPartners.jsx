@@ -57,7 +57,7 @@ const Partners = () => {
   };
 
   return (
-    <div className={styles.altPartners}>
+    <section className={styles.altPartners}>
       <Container fixed>
         <Grid container spacing={2}>
           <Grid
@@ -86,7 +86,7 @@ const Partners = () => {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </section>
   );
 };
 

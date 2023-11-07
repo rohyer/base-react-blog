@@ -57,7 +57,7 @@ const Partners = () => {
   };
 
   return (
-    <div className={styles.partners}>
+    <section className={styles.partners}>
       <Container fixed>
         <div className={styles.topContent}>
           <h2 className="hidden-bottom-element">{partners.homeTitle}</h2>
@@ -75,7 +75,7 @@ const Partners = () => {
           {getLink()}
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
 

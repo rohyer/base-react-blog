@@ -66,7 +66,7 @@ const Services = () => {
   };
 
   return (
-    <div className={styles.services}>
+    <section className={styles.services}>
       <Container fixed>
         <div className={styles.topContent}>
           <h2 className="hidden-bottom-element">{services.homeTitle}</h2>
@@ -108,7 +108,7 @@ const Services = () => {
           {getLink()}
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
 
