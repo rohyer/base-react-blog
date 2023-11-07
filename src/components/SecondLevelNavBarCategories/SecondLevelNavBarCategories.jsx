@@ -11,9 +11,12 @@ const SecondLevelNavBarCategories = ({ handleClick, showAll }) => {
 
   React.useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('http://localhost:1337/api/categorias', {
-        headers,
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_API_URL}/api/categorias`,
+        {
+          headers,
+        },
+      );
       const json = await response.json();
       setCategories(json.data);
     };
