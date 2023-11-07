@@ -1,3 +1,16 @@
+.skiptranslate {
+  display: none;
+}
+.goog-te-banner-frame {
+  display: none !important;
+}
+.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
+  display: none;
+}
+body {
+  top: 0 !important;
+}
+
 /* Body */
 body.overflow-hidden {
   overflow: hidden;
@@ -142,20 +155,4 @@ body.overflow-hidden {
   font-weight: 400;
   font-style: normal;
   color: #333333;
-}
-
-.skiptranslate {
-  display: none;
-}
-#google_translate_element {
-  display: none;
-}
-.goog-te-banner-frame {
-  display: none !important;
-}
-.VIpgJd-ZVi9od-aZ2wEe-wOHMyf {
-  display: none;
-}
-body {
-  top: 0 !important;
 }
