@@ -171,8 +171,8 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 50px;
-    bottom: 0;
+    top: inherit;
+    bottom: 30px;
     width: 80%;
     height: fit-content;
     padding: 20px;
@@ -184,15 +184,15 @@
   }
 
   .banner .content h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
   
   .banner .content p {
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .banner .swiper-button-prev, .banner .swiper-button-next {
-    top: 25% !important;
+    top: 35% !important;
   }
   .banner .swiper-button-prev::after, .banner .swiper-button-next::after {
     font-size: 30px !important;
