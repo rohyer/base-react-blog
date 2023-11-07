@@ -104,7 +104,7 @@ const AltBanner = () => {
 
   return (
     <section className={styles.banner}>
-      <Container maxWidth="xl" style={{ padding: 0 }}>
+      <Container maxWidth={false} style={{ padding: 0 }}>
         <Swiper
           modules={[Navigation, Pagination, Autoplay, Parallax]}
           navigation
